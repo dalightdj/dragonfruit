@@ -18,36 +18,41 @@ public class Touch_Input : MonoBehaviour {
 	void Update () {
 	
 		touches = Input.touches;
-		foreach(Touch t in touches){
+		foreach (Touch t in touches) {
 
 
-			Ray screenRay = Camera.main.ScreenPointToRay(t.position);
+			Ray screenRay = Camera.main.ScreenPointToRay (t.position);
 			
 			RaycastHit hit;
-			if (Physics.Raycast(screenRay, out hit))
-			{
-				print("User tapped on game object " + hit.collider.gameObject.name);
-				Renderer selectedRenderer = hit.collider.gameObject.GetComponent<Renderer>();
-				selectedRenderer.GetComponent<Material>().SetColor("_Color", Color.red);
+	
+			if (Physics.Raycast (screenRay, out hit)) {
+				print ("User tapped on game object " + hit.collider.gameObject.name);
+				Renderer selectedRenderer = hit.collider.gameObject.GetComponent<Renderer> ();
+				selectedRenderer.GetComponent<Material> ().SetColor ("_Color", Color.red);
+			} else {
+				print ("nada");
 			}
 
 		}
 
+
+		if (Input.GetMouseButtonDown (0)) {
+		
+			Ray  mouseRay = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit hit;
+			if (Physics.Raycast(mouseRay, out hit))
+			{
+				print("User tapped on game object " + hit.collider.gameObject.name);
+				Renderer selectedRenderer = hit.collider.gameObject.GetComponent<Renderer>();
+				selectedRenderer.GetComponent<Material>().SetColor("_Color", Color.blue);
+			}
+			else{print ("nada");}
+						
+		}	
 	}
 
 
-	void OnMouseDown(){
 
-		Ray  mouseRay = Camera.main.ScreenPointToRay (Input.mousePosition);
-		RaycastHit hit;
-		if (Physics.Raycast(mouseRay, out hit))
-		{
-			print("User tapped on game object " + hit.collider.gameObject.name);
-			Renderer selectedRenderer = hit.collider.gameObject.GetComponent<Renderer>();
-			selectedRenderer.GetComponent<Material>().SetColor("_Color", Color.red);
-		}
-
-	}
 
 	void OnGUI(){
 
