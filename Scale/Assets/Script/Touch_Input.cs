@@ -5,7 +5,7 @@ public class Touch_Input : MonoBehaviour {
 
 	private Touch[] touches; 
 
-
+	public Material selectedMaterial;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +18,34 @@ public class Touch_Input : MonoBehaviour {
 	void Update () {
 	
 		touches = Input.touches;
+		foreach(Touch t in touches){
+
+
+			Ray screenRay = Camera.main.ScreenPointToRay(t.position);
+			
+			RaycastHit hit;
+			if (Physics.Raycast(screenRay, out hit))
+			{
+				print("User tapped on game object " + hit.collider.gameObject.name);
+				Renderer selectedRenderer = hit.collider.gameObject.GetComponent<Renderer>();
+				selectedRenderer.GetComponent<Material>().SetColor("_Color", Color.red);
+			}
+
+		}
+
+	}
+
+
+	void OnMouseDown(){
+
+		Ray  mouseRay = Camera.main.ScreenPointToRay (Input.mousePosition);
+		RaycastHit hit;
+		if (Physics.Raycast(mouseRay, out hit))
+		{
+			print("User tapped on game object " + hit.collider.gameObject.name);
+			Renderer selectedRenderer = hit.collider.gameObject.GetComponent<Renderer>();
+			selectedRenderer.GetComponent<Material>().SetColor("_Color", Color.red);
+		}
 
 	}
 
