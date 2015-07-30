@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TileInfo : MonoBehaviour {
+public class TileInfoScript : MonoBehaviour {
 
 	public int population;
 	public int material;
