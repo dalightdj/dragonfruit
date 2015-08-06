@@ -21,6 +21,9 @@ ExportedObj/
 *.unityproj
 *.booproj
 
+# Unity3D generated meta files
+*.pidb.meta
+
 # ============ #
 # OS generated #
 # ============ #
