@@ -14,9 +14,9 @@ public class BuildMenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		for (int i = 0; i<buildMenus.Length; i++) {
-			asdf (buildMenus[i]);
-		}
+		//for (int i = 0; i<buildMenus.Length; i++) {
+		//	asdf (buildMenus[i]);
+		//}
 	}
 	
 	// Update is called once per frame
@@ -71,6 +71,46 @@ public class BuildMenuScript : MonoBehaviour {
 		}
 
 
+		menu.SetActive (true);
+	}
+
+	//Assuming 'pos' is a Vector 2 with (0,0) at the top-left. 'x' increases to the right. 'y' decreases to the bottom.
+	public void callMenu(Direction dir){
+		GameObject menu;
+		Vector2 newPos;
+		
+		if (dir == Direction.DOWN) {
+			menu = buildMenus[0];
+		}
+		else if (dir == Direction.LEFT) {
+			menu = buildMenus[1];
+		}
+		else if (dir == Direction.UP) {
+			menu = buildMenus[2];
+		}
+		else{//(dir == Direction.RIGHT) {
+			menu = buildMenus[3];
+		}
+		
+		//retrieve building options menu
+		GameObject buildingOptionsList = null;
+		foreach (Transform child in menu.transform) {
+			if(child.gameObject.tag.Equals("BuildingOptionsList")){
+				buildingOptionsList = child.gameObject;
+				break;
+			}
+		}
+		
+		//populate the building options menu
+		foreach (Transform child in buildingOptionsList.transform) {
+			Destroy(child.gameObject);
+		}
+		for (int i = 0; i<buildingOptions.Length; i++) {
+			Button newChild = Instantiate (buildingOptions[i]);
+			newChild.transform.SetParent(buildingOptionsList.transform, false);
+		}
+		
+		
 		menu.SetActive (true);
 	}
 
