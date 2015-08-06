@@ -201,8 +201,8 @@ GameObject:
   - 114: {fileID: 11448474}
   - 114: {fileID: 11478790}
   m_Layer: 5
-  m_Name: BuildingChoices
-  m_TagString: Untagged
+  m_Name: BuildingOptionsList
+  m_TagString: BuildingOptionsList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

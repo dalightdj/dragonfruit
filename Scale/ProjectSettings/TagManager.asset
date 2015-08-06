@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ground
   - ScoreText
+  - BuildingOptionsList
   layers:
   - Default
   - TransparentFX

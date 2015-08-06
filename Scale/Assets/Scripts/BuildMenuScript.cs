@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BuildMenuScript : MonoBehaviour {
@@ -6,9 +7,17 @@ public class BuildMenuScript : MonoBehaviour {
 	public enum Direction {UP, DOWN, LEFT, RIGHT};
 	public GameObject[] buildMenus;//0=DOWN, 1=LEFT, 2=UP, 3=RIGHT
 
+	//for building buildings
+	public Button[] buildingOptions;//the building options available in the build menu
+	public GameObject[] buildings;//each index of this array should have the corresponding building to the building options
+
+
+
 	// Use this for initialization
 	void Start () {
-	
+		for (int i = 0; i<buildMenus.Length; i++) {
+			asdf (buildMenus[i]);
+		}
 	}
 	
 	// Update is called once per frame
@@ -43,10 +52,63 @@ public class BuildMenuScript : MonoBehaviour {
 		}
 		
 		menu.GetComponent<RectTransform> ().anchoredPosition = newPos;
+
+		//retrieve building options menu
+		GameObject buildingOptionsList = null;
+		foreach (Transform child in menu.transform) {
+			if(child.gameObject.tag.Equals("BuildingOptionsList")){
+				buildingOptionsList = child.gameObject;
+				break;
+			}
+		}
+
+		//populate the building options menu
+		foreach (Transform child in buildingOptionsList.transform) {
+			Destroy(child.gameObject);
+		}
+		for (int i = 0; i<buildingOptions.Length; i++) {
+			Button newChild = Instantiate (buildingOptions[i]);
+			newChild.transform.SetParent(buildingOptionsList.transform, false);
+		}
+
+
+		menu.SetActive (true);
+	}
+
+	private void asdf(GameObject menu){
+		//retrieve building options menu
+		GameObject buildingOptionsList = null;
+		foreach (Transform child in menu.transform) {
+			if(child.gameObject.tag.Equals("BuildingOptionsList")){
+				buildingOptionsList = child.gameObject;
+				break;
+			}
+		}
+		
+		//populate the building options menu
+		foreach (Transform child in buildingOptionsList.transform) {
+			Destroy(child.gameObject);
+		}
+		for (int i = 0; i<buildingOptions.Length; i++) {
+			Button newChild = Instantiate (buildingOptions[i]);
+			newChild.transform.SetParent(buildingOptionsList.transform, false);
+		}
+
 		menu.SetActive (true);
 	}
 
 	public void closeMenu(GameObject menu){
 		menu.SetActive (false);
+	}
+
+
+	public void BuildBuilding(Button button){
+		print ("got here");
+		for (int i = 0; i<buildingOptions.Length; i++) {
+			if(buildingOptions[i] == button){
+				print ("got here too");
+				Instantiate(buildings[i]);
+			}
+		}
 	}
 }

@@ -27,6 +27,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 425352}
+  - 114: {fileID: 11419986}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -117,13 +118,32 @@ MonoBehaviour:
   material: 0
   pollution: 0
   food: 0
+--- !u!114 &11419986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d12cf4f3031eb741819c93090ef6ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  population: 10
+  material: 0
+  pollution: 0
+  food: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: population
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 194102}
