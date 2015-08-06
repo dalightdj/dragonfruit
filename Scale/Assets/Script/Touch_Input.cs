@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class Touch_Input : MonoBehaviour {
 
 	private Touch[] touches; 
 	private Dictionary<Touch, GameObject> touches_for_use;
 
-	public BuildMenuScript BMS; 
-
+	public GameObject gameGUI; 
+	private BuildMenuScript BMS;
 	
 	public Material selectedMaterial;
 
@@ -22,6 +23,8 @@ public class Touch_Input : MonoBehaviour {
 
 	void Start(){
 		touches_for_use = new Dictionary<Touch, GameObject> ();
+		BMS = gameGUI.GetComponent<BuildMenuScript> ();
+
 	}
 
 	// Update is called once per frame
@@ -31,8 +34,7 @@ public class Touch_Input : MonoBehaviour {
 		foreach (Touch t in touches) {
 
 
-
-			if(t.phase == TouchPhase.Began){
+			if (t.phase == TouchPhase.Began) {
 							
 				Ray screenRay = Camera.main.ScreenPointToRay (t.position);
 				
@@ -42,7 +44,7 @@ public class Touch_Input : MonoBehaviour {
 					print ("User tapped on game object " + hit.collider.gameObject.name);
 					GameObject selectedObject_Touch = hit.collider.gameObject;
 
-					touches_for_use.Add(t, selectedObject_Touch);
+					touches_for_use.Add (t, selectedObject_Touch);
 					//Destroy (selectedObject_Touch);
 				} else {
 					print ("touched nothing");
@@ -50,34 +52,69 @@ public class Touch_Input : MonoBehaviour {
 
 			}
 
+		}
+
 
 			foreach( KeyValuePair<Touch, GameObject> tch in touches_for_use){
+	       
+			
+				BuildMenuScript.Direction dir = BuildMenuScript.Direction.UP;
 
-				if(tch.Key.phase == TouchPhase.Ended){
+				Vector2 moved = tch.Key.deltaPosition;
 
-					Ray screenRay = Camera.main.ScreenPointToRay (tch.Key.position);
+				if(Math.Abs(moved.x) < Math.Abs (moved.y) ){
+
+					if(moved.y < 0){
+
+						dir = BuildMenuScript.Direction.UP;
+
+					}
+					else{
+
+						dir = BuildMenuScript.Direction.DOWN;
+
+					}
+				}
+				else{
+
+					if(moved.x < 0){
+						
+						dir = BuildMenuScript.Direction.LEFT;
+						
+					}
+					else{
+						
+						dir = BuildMenuScript.Direction.RIGHT;
+						
+					}
+
+				}
+
+
+				BMS.callMenu(dir);
+				Destroy (tch.Value);
+
+
+
+
+				/*Ray screenRay = Camera.main.ScreenPointToRay (tch.Key.position);
 					
 					RaycastHit hit;
 					
 					if (Physics.Raycast (screenRay, out hit)) {
 						print ("User ended swipe on game object: " + hit.collider.gameObject.name);
-						GameObject selectedObject_Touch = hit.collider.gameObject;
+						GameObject object_Touched = hit.collider.gameObject;
 
-						TileEnum dir = selectedObject_Touch.GetComponent<TileEnum>();
+					TileEnum dir = object_Touched.GetComponent<TileEnum>();
 
 						BMS.callMenu(dir.Tiles_Loc ,tch.Key.position);
 
-
-
-						Destroy (selectedObject_Touch);
+					Destroy (object_Touched);
+					touches_for_use.Remove(tch.Key);
 					} else {
 						print ("end phase landed on");
-					}
-
-				}
-
-			}
-
+					}*/
+				
 
 		}
 
@@ -85,7 +122,6 @@ public class Touch_Input : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 
 			MouseOrigin = Input.mousePosition;
-
 
 			Ray mouseRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
@@ -101,7 +137,7 @@ public class Touch_Input : MonoBehaviour {
 				//GUI.Label(new Rect(Input.mousePosition.x, Input.mousePosition.y, 100,100),"X position: " + t.position.x + "y coordinate: " + t.position.y );
 
 				
-				Destroy (selectedObject_Mouse);
+				//Destroy (selectedObject_Mouse);
 			} else {
 				print ("nada");
 			}
