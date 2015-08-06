@@ -12,7 +12,6 @@ public class BuildMenuScript : MonoBehaviour {
 	public GameObject[] buildings;//each index of this array should have the corresponding building to the building options
 
 
-
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; i<buildMenus.Length; i++) {
@@ -103,11 +102,16 @@ public class BuildMenuScript : MonoBehaviour {
 
 
 	public void BuildBuilding(Button button){
-		print ("got here");
+		string buttonAsString = button.ToString().Split('(', ' ')[0];
+
 		for (int i = 0; i<buildingOptions.Length; i++) {
-			if(buildingOptions[i] == button){
-				print ("got here too");
+
+			//split the string to get it's name
+			string buildingAsString = buildingOptions[i].ToString().Split('(', ' ')[0];
+
+			if(buttonAsString.Equals(buildingAsString)){
 				Instantiate(buildings[i]);
+				return;
 			}
 		}
 	}
