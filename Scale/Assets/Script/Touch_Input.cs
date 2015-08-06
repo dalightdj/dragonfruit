@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Touch_Input : MonoBehaviour {
 
 	private Touch[] touches; 
+	private Dictionary<Touch, GameObject> touches_for_use;
+
+	public BuildMenuScript BMS; 
+
 	
 	public Material selectedMaterial;
 
@@ -14,6 +19,11 @@ public class Touch_Input : MonoBehaviour {
 	private Vector3 MouseOrigin;
 	private Vector3 mouseFinish;
 
+
+	void Start(){
+		touches_for_use = new Dictionary<Touch, GameObject> ();
+	}
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -21,17 +31,53 @@ public class Touch_Input : MonoBehaviour {
 		foreach (Touch t in touches) {
 
 
-			Ray screenRay = Camera.main.ScreenPointToRay (t.position);
-			
-			RaycastHit hit;
-	
-			if (Physics.Raycast (screenRay, out hit)) {
-				print ("User tapped on game object " + hit.collider.gameObject.name);
-				GameObject selectedObject_Touch = hit.collider.gameObject;
-				Destroy (selectedObject_Touch);
-			} else {
-				print ("nada");
+
+			if(t.phase == TouchPhase.Began){
+							
+				Ray screenRay = Camera.main.ScreenPointToRay (t.position);
+				
+				RaycastHit hit;
+				
+				if (Physics.Raycast (screenRay, out hit)) {
+					print ("User tapped on game object " + hit.collider.gameObject.name);
+					GameObject selectedObject_Touch = hit.collider.gameObject;
+
+					touches_for_use.Add(t, selectedObject_Touch);
+					//Destroy (selectedObject_Touch);
+				} else {
+					print ("touched nothing");
+				}
+
 			}
+
+
+			foreach( KeyValuePair<Touch, GameObject> tch in touches_for_use){
+
+				if(tch.Key.phase == TouchPhase.Ended){
+
+					Ray screenRay = Camera.main.ScreenPointToRay (tch.Key.position);
+					
+					RaycastHit hit;
+					
+					if (Physics.Raycast (screenRay, out hit)) {
+						print ("User ended swipe on game object: " + hit.collider.gameObject.name);
+						GameObject selectedObject_Touch = hit.collider.gameObject;
+
+						TileEnum dir = selectedObject_Touch.GetComponent<TileEnum>();
+
+						BMS.callMenu(dir.Tiles_Loc ,tch.Key.position);
+
+
+
+						Destroy (selectedObject_Touch);
+					} else {
+						print ("end phase landed on");
+					}
+
+				}
+
+			}
+
 
 		}
 
