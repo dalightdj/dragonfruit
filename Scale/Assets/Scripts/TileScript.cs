@@ -7,6 +7,7 @@ public class TileScript : MonoBehaviour {
 	public int material;
 	public int pollution;
 	public int food;
+	public TileType tileType;
 
-	public enum Type{WATER, LAND, FOREST};
+	public enum TileType{WATER, LAND, FOREST};
 }
