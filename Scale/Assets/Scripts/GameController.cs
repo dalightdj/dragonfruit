@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		scoreTexts = GameObject.FindGameObjectsWithTag ("ScoreText");
-		print (scoreTexts);
 	}
 	
 	// Update is called once per frame

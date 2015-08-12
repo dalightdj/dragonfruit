@@ -17,6 +17,10 @@ public class BuildMenuScript : MonoBehaviour {
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
+		//callMenu (Direction.UP);
+		//callMenu (Direction.DOWN);
+		//callMenu (Direction.LEFT);
+		//callMenu (Direction.RIGHT);
 	}
 	
 	// Update is called once per frame
@@ -76,7 +80,6 @@ public class BuildMenuScript : MonoBehaviour {
 
 	//Assuming 'pos' is a Vector 2 with (0,0) at the top-left. 'x' increases to the right. 'y' decreases to the bottom.
 	public void callMenu(Direction dir){
-		Application.LoadLevel ("Game");
 		GameObject menu;
 		Vector2 newPos;
 		
