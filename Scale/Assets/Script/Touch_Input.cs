@@ -20,7 +20,9 @@ public class Touch_Input : MonoBehaviour {
 	private Vector3 MouseOrigin;
 	private Vector3 mouseFinish;
 
+	private Boolean swiped = false;
 
+	public int swipeThreshold = 10;
 	void Start(){
 		touches_for_use = new Dictionary<Touch, GameObject> ();
 		BMS = gameGUI.GetComponent<BuildMenuScript> ();
@@ -64,28 +66,29 @@ public class Touch_Input : MonoBehaviour {
 
 				if(Math.Abs(moved.x) < Math.Abs (moved.y) ){
 
-					if(moved.y < 0){
-
-						dir = BuildMenuScript.Direction.UP;
-
-					}
-					else{
+					if(moved.y < -swipeThreshold){
 
 						dir = BuildMenuScript.Direction.DOWN;
+					swiped = true;
 
+					}
+				else if (moved.y > swipeThreshold){
+
+						dir = BuildMenuScript.Direction.UP;
+					swiped = true;
 					}
 				}
 				else{
 
-					if(moved.x < 0){
+				if(moved.x < -swipeThreshold){
 						
 						dir = BuildMenuScript.Direction.LEFT;
-						
+					swiped = true;
 					}
-					else{
+				else if(moved.x > swipeThreshold){
 						
 						dir = BuildMenuScript.Direction.RIGHT;
-						
+					swiped = true;
 					}
 
 				}
@@ -93,7 +96,10 @@ public class Touch_Input : MonoBehaviour {
 
 				BMS.callMenu(dir);
 				Destroy (tch.Value);
-
+			    
+			if(swiped){
+				removeTouch(tch.Key);
+			}
 
 
 
@@ -130,7 +136,7 @@ public class Touch_Input : MonoBehaviour {
 				GameObject selectedObject_Mouse = hit.collider.gameObject;
 
 
-
+				//BMS.callMenu(BuildMenuScript.Direction.DOWN);
 				/*Get the pivot*/
 				//pivotPoint = new Vector2(Screen.width / 2, Screen.height / 2);
 				//GUIUtility.RotateAroundPivot(, pivotPoint);
@@ -165,6 +171,12 @@ public class Touch_Input : MonoBehaviour {
 						GUI.Label(new Rect(t.position.x,t.position.y,100,100),"x coordinate: " + t.position.x + "y coordinate: " + t.position.y );
 
 		}
+
+	}
+
+	void removeTouch(Touch t){
+
+		touches_for_use.Remove (t);
 
 	}
 }
