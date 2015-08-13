@@ -18,10 +18,10 @@ public class BuildMenuScript : MonoBehaviour {
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
-		//callMenu (Direction.UP);
-		//callMenu (Direction.DOWN);
-		//callMenu (Direction.LEFT);
-		//callMenu (Direction.RIGHT);
+		//callMenu (Direction.UP, null);
+		callMenu (Direction.DOWN, null);
+		callMenu (Direction.LEFT, null);
+		//callMenu (Direction.RIGHT, null);
 	}
 	
 	// Update is called once per frame

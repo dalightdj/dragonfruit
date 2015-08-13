@@ -14,7 +14,7 @@ public class TileScript : MonoBehaviour {
 
 	public void build(){
 		GameObject build = Instantiate(building);
-		build.transform.position = transform.position;
+		build.transform.position = new Vector3 (0, 0, 0);//transform.position;
 	}
 
 }

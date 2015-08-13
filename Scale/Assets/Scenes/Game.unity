@@ -21196,7 +21196,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 419594, guid: 080f09f80acb1d44aaee5bce853a53a5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .50000006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 419594, guid: 080f09f80acb1d44aaee5bce853a53a5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -27074,6 +27074,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11407870, guid: a80fa10c346b5f64f8b5ea17297f35b3, type: 2}
+      propertyPath: buildings.Array.data[0]
+      value: 
+      objectReference: {fileID: 175840, guid: 9cd3b9196dbdb994eae286b97dfded44, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a80fa10c346b5f64f8b5ea17297f35b3, type: 2}
   m_IsPrefabParent: 0
