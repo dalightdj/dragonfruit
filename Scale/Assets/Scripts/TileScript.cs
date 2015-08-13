@@ -13,7 +13,8 @@ public class TileScript : MonoBehaviour {
 	public enum TileType{WATER, LAND, FOREST};
 
 	public void build(){
-		Instantiate(building);
+		GameObject build = Instantiate(building);
+		build.transform.position = transform.position;
 	}
 
 }
