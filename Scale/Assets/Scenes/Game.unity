@@ -26758,6 +26758,22 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 117078, guid: a80fa10c346b5f64f8b5ea17297f35b3, type: 2}
+      propertyPath: m_Name
+      value: BuildMenu0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134586, guid: a80fa10c346b5f64f8b5ea17297f35b3, type: 2}
+      propertyPath: m_Name
+      value: BuildMenu1
+      objectReference: {fileID: 0}
+    - target: {fileID: 175720, guid: a80fa10c346b5f64f8b5ea17297f35b3, type: 2}
+      propertyPath: m_Name
+      value: BuildMenu2
+      objectReference: {fileID: 0}
+    - target: {fileID: 152534, guid: a80fa10c346b5f64f8b5ea17297f35b3, type: 2}
+      propertyPath: m_Name
+      value: BuildMenu3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a80fa10c346b5f64f8b5ea17297f35b3, type: 2}
   m_IsPrefabParent: 0
@@ -29800,6 +29816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameGUI: {fileID: 878688421}
   selectedMaterial: {fileID: 0}
+  swipeThreshold: 10
 --- !u!4 &1839284695
 Transform:
   m_ObjectHideFlags: 0
