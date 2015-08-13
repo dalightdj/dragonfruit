@@ -11,13 +11,14 @@ public class BuildMenuScript : MonoBehaviour {
 	public Button[] buildingOptions;//the building options available in the build menu
 	public GameObject[] buildings;//each index of this array should have the corresponding building to the building options
 
+	private GameObject[] selectedTiles = new GameObject[4];
 
 	// Use this for initialization
 	void Start () {
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
-		callMenu (Direction.UP);
+		//callMenu (Direction.UP);
 		//callMenu (Direction.DOWN);
 		//callMenu (Direction.LEFT);
 		//callMenu (Direction.RIGHT);
@@ -79,21 +80,25 @@ public class BuildMenuScript : MonoBehaviour {
 	}
 
 	//Assuming 'pos' is a Vector 2 with (0,0) at the top-left. 'x' increases to the right. 'y' decreases to the bottom.
-	public void callMenu(Direction dir){
+	public void callMenu(Direction dir, GameObject tile){
 		GameObject menu;
 		Vector2 newPos;
 		
 		if (dir == Direction.DOWN) {
 			menu = buildMenus[0];
+			selectedTiles[0] = tile;
 		}
 		else if (dir == Direction.LEFT) {
 			menu = buildMenus[1];
+			selectedTiles[1] = tile;
 		}
 		else if (dir == Direction.UP) {
 			menu = buildMenus[2];
+			selectedTiles[2] = tile;
 		}
 		else{//(dir == Direction.RIGHT) {
 			menu = buildMenus[3];
+			selectedTiles[3] = tile;
 		}
 		
 		//retrieve building options menu
@@ -148,13 +153,19 @@ public class BuildMenuScript : MonoBehaviour {
 	public void BuildBuilding(Button button){
 		string buttonAsString = button.ToString().Split('(', ' ')[0];
 
+		string getIndex = button.transform.parent.parent.gameObject.ToString().Substring(9, 1);
+		int index = int.Parse (getIndex);
+		TileScript selectedTileScript = selectedTiles [index].GetComponent<TileScript>();
+
+
 		for (int i = 0; i<buildingOptions.Length; i++) {
 
 			//split the string to get it's name
 			string buildingAsString = buildingOptions[i].ToString().Split('(', ' ')[0];
 
 			if(buttonAsString.Equals(buildingAsString)){
-				Instantiate(buildings[i]);
+				selectedTileScript.building = buildings[i];
+				selectedTileScript.build ();
 				return;
 			}
 		}
