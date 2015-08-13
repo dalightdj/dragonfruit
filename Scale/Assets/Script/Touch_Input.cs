@@ -94,7 +94,7 @@ public class Touch_Input : MonoBehaviour {
 				}
 
 
-				BMS.callMenu(dir);
+				BMS.callMenu(dir, null);
 				Destroy (tch.Value);
 			    
 			if(swiped){
