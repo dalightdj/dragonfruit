@@ -8,13 +8,15 @@ public class TileScript : MonoBehaviour {
 	public int pollution;
 	public int food;
 	public TileType tileType;
+	public GameObject tile;
 	public GameObject building;
 
 	public enum TileType{WATER, LAND, FOREST};
 
 	public void build(){
 		GameObject build = Instantiate(building);
-		build.transform.position = new Vector3 (0, 0, 0);//transform.position;
+		build.transform.position = tile.transform.position;
+			//new Vector3 (0, 0, 0);//transform.position;
 	}
 
 }
