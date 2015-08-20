@@ -4,9 +4,10 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
+	public int timeLimit = 60;//the losing condition i.e. 60 seconds
+
 	private float time;
 	private GameObject[] scoreTexts;//the Text components that will show the score
-	private int timeLimit = 60;//the losing condition i.e. 60 seconds
 
 	// Use this for initialization
 	void Start () {

@@ -11828,20 +11828,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476f74293e477ce4db39aae18b8f1f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeLimit: 360
 --- !u!82 &678685344
 AudioSource:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 678685337}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 16d7a5d7f17fc9442a4888cf67bb9dab, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -22708,7 +22709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a614df387eb6deb4c919d203f0858ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 2
 --- !u!4 &1397524666 stripped
 Transform:
   m_PrefabParentObject: {fileID: 431168, guid: 9de8e799a8116a540a536f4f27b3e921, type: 2}
