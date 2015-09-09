@@ -17,7 +17,6 @@ public class BuildMenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		print ("a;sdlkfjas;dflkjasdf");
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
