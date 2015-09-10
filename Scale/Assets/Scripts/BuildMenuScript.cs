@@ -14,6 +14,7 @@ public class BuildMenuScript : MonoBehaviour {
 	public GameObject[] buildings;//each index of this array should have the corresponding building to the building options
 
 	private GameObject[] selectedTiles = new GameObject[4];
+	private GameObject[] tileHighlightLights = new GameObject[4];
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +35,8 @@ public class BuildMenuScript : MonoBehaviour {
 	//Assuming 'pos' is a Vector 2 with (0,0) at the top-left. 'x' increases to the right. 'y' decreases to the bottom.
 	public void callMenu(Direction dir, GameObject tile){
 		GameObject menu;
+		GameObject lightGameObject = new GameObject("The Light");
+		Color highlightColor;
 
 		print ("tile:" + tile);
 		print (dir);
@@ -42,22 +45,32 @@ public class BuildMenuScript : MonoBehaviour {
 		if (dir == Direction.DOWN) {
 			menu = buildMenus[0];
 			selectedTiles[0] = tile;
+			tileHighlightLights[0] = lightGameObject;
+			highlightColor = Color.red;
 		}
 		else if (dir == Direction.LEFT) {
 			menu = buildMenus[1];
 			selectedTiles[1] = tile;
+			tileHighlightLights[1] = lightGameObject;
+			highlightColor = Color.blue;
 		}
 		else if (dir == Direction.UP) {
 			menu = buildMenus[2];
 			selectedTiles[2] = tile;
+			tileHighlightLights[2] = lightGameObject;
+			highlightColor = Color.green;
 		}
 		else{//(dir == Direction.RIGHT) {
 			menu = buildMenus[3];
 			selectedTiles[3] = tile;
+			tileHighlightLights[3] = lightGameObject;
+			highlightColor = Color.magenta;
 		}
 		print ("index 0:" + selectedTiles [0]);
 
-		
+
+		highlightTile (tile, highlightColor);
+
 		//retrieve building options menu
 		GameObject buildingOptionsList = null;
 		foreach (Transform child in menu.transform) {
@@ -83,6 +96,15 @@ public class BuildMenuScript : MonoBehaviour {
 		menu.SetActive (true);
 		print("index " + 0 + ":" + selectedTiles[0]);
 		print ("========================");
+	}
+
+
+	//adds the highlgihting for a given tile. will add a point light 1 unit above teh given game object
+	void highlightTile(GameObject tile, Color highLightColor, GameObject lightGameObject){		
+		Light lightComp = lightGameObject.AddComponent<Light>();
+		lightComp.color = highLightColor;
+		Vector3 raise = new Vector3 (0,1,0);
+		lightGameObject.transform.position = tile.transform.position + raise;		
 	}
 
 
@@ -139,6 +161,7 @@ public class BuildMenuScript : MonoBehaviour {
 				selectedTileScript.building = buildings[i];
 				selectedTileScript.build ();
 				closeMenu(menu);
+				Destroy (tileHighlightLights[i]);
 				return;
 			}
 		}
