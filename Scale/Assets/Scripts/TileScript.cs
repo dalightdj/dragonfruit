@@ -16,7 +16,17 @@ public class TileScript : MonoBehaviour {
 	public void build(){
 		GameObject build = Instantiate(building);
 		build.transform.position = tile.transform.position;
-			//new Vector3 (0, 0, 0);//transform.position;
+
+		if(building.name.Equals("House")){
+			GameController.gameController.increaseMaxPopulation();
+		}
+	}
+
+	public void destroyBuilding(){
+		if (building != null) {
+			Destroy(building);
+			GameController.gameController.decreaseMaxPopulation();
+		}
 	}
 
 }

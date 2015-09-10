@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	private int totalPollution;
 	private int totalFood;
 
+	private PopulationManagerScript populationManager = new PopulationManagerScript();
 	
 	//Ensures GameController is a singleton
 	void Awake () 
@@ -58,5 +59,13 @@ public class GameController : MonoBehaviour {
 		totalMaterial += material;
 		totalPollution += pollution;
 		totalFood += food;
+	}
+
+	public void increaseMaxPopulation(){
+		populationManager.increaseMaxPopulation ();
+	}
+
+	public void decreaseMaxPopulation(){
+		populationManager.decreaseMaxPopulation ();
 	}
 }
