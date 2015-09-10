@@ -173,7 +173,6 @@ public class Touch_Input : MonoBehaviour {
 		GameObject lightGameObject = new GameObject("The Light");
 		Light lightComp = lightGameObject.AddComponent<Light>();
 		lightComp.color = highLightColor;
-		lightGameObject.tag = tag;
 		Vector3 raise = new Vector3 (0,1,0);
 		lightGameObject.transform.position = obj.transform.position + raise;
 		
