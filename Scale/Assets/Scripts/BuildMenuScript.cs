@@ -75,7 +75,7 @@ public class BuildMenuScript : MonoBehaviour {
 			Button newChild = Instantiate (buildingOptions[i]);
 			newChild.transform.SetParent(buildingOptionsList.transform, false);
 			newChild.onClick.AddListener(() => {
-				this.BuildBuilding(newChild);
+				this.BuildBuilding(newChild, menu);
 			});
 		}
 		
@@ -114,7 +114,7 @@ public class BuildMenuScript : MonoBehaviour {
 	}
 
 
-	public void BuildBuilding(Button button){
+	public void BuildBuilding(Button button, GameObject menu){
 		print("index " + 0 + ":" + selectedTiles[0]);
 		string buttonAsString = button.ToString().Split('(', ' ')[0];
 
@@ -138,7 +138,7 @@ public class BuildMenuScript : MonoBehaviour {
 			if(buttonAsString.Equals(buildingAsString)){
 				selectedTileScript.building = buildings[i];
 				selectedTileScript.build ();
-				closeMenu();
+				closeMenu(menu);
 				return;
 			}
 		}
