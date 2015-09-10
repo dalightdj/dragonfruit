@@ -14,18 +14,24 @@ public class TileScript : MonoBehaviour {
 	public enum TileType{WATER, LAND, FOREST};
 
 	public void build(){
+		print ("JUST BUILDT");
 		if (building.name.Equals ("House") || building.name.Equals ("Apartment")) {
 			GameController.gameController.increaseMaxPopulation ();
+
 		} else {
 			int employment = 10;
 
-			if(!GameController.gameController.hasSufficientUnemployed(employment)){
+			//UNCOMMENT THIS FOR BUILDING RESTRICTION
+			 /* if(!GameController.gameController.hasSufficientUnemployed(employment)){
+				print ("CANNOT BUILD");
 				return;
-			}
+			}*/
 			GameController.gameController.increaseEmployment(employment);
 		}
+		print ("INSTANTITATION");
 			   GameObject build = Instantiate(building);
 			   build.transform.position = tile.transform.position;
+		print (build.transform.position);
 	}
 
 
