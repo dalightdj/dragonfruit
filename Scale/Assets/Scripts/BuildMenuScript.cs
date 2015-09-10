@@ -107,11 +107,11 @@ public class BuildMenuScript : MonoBehaviour {
 		}
 
 		menu.SetActive (true);
-	}
+	}*/
 
 	public void closeMenu(GameObject menu){
 		menu.SetActive (false);
-	}*/
+	}
 
 
 	public void BuildBuilding(Button button){
@@ -138,6 +138,7 @@ public class BuildMenuScript : MonoBehaviour {
 			if(buttonAsString.Equals(buildingAsString)){
 				selectedTileScript.building = buildings[i];
 				selectedTileScript.build ();
+				closeMenu();
 				return;
 			}
 		}
