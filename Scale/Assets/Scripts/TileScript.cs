@@ -14,19 +14,30 @@ public class TileScript : MonoBehaviour {
 	public enum TileType{WATER, LAND, FOREST};
 
 	public void build(){
-		GameObject build = Instantiate(building);
-		build.transform.position = tile.transform.position;
+		if (building.name.Equals ("House") || building.name.Equals ("Apartment")) {
+			GameController.gameController.increaseMaxPopulation ();
+		} else {
+			int employment = 10;
 
-		if(building.name.Equals("House")){
-			GameController.gameController.increaseMaxPopulation();
+			if(!GameController.gameController.hasSufficientUnemployed(employment)){
+				return;
+			}
+			GameController.gameController.increaseEmployment(employment);
 		}
+			   GameObject build = Instantiate(building);
+			   build.transform.position = tile.transform.position;
 	}
+
 
 	public void destroyBuilding(){
 		if (building != null) {
-			Destroy(building);
-			GameController.gameController.decreaseMaxPopulation();
+			Destroy (building);
+
+			if (building.name.Equals ("House") || building.name.Equals ("Apartment")) {
+				GameController.gameController.decreaseMaxPopulation ();
+			} else {
+				GameController.gameController.decreaseEmployment (10);
+			}
 		}
 	}
-
 }
