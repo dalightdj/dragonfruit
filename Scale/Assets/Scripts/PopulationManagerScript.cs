@@ -22,8 +22,6 @@ public class PopulationManagerScript : MonoBehaviour {
 			currentPopulation = maxPopulation;
 			GameController.gameController.addResources (maxPopulation-currentPopulation, 0, 0, 0);
 		}
-
-
 	}
 
 	public void increaseMaxPopulation(){
@@ -32,5 +30,17 @@ public class PopulationManagerScript : MonoBehaviour {
 
 	public void decreaseMaxPopulation(){
 		maxPopulation -= 20;
+	}
+
+	public void increaseEmployment(int population){
+		employed += population;
+	}
+
+	public void decreaseEmployment(int population){
+		employed -= population;
+	}
+
+	public bool hasSufficientUnemployed(int population){
+		return (currentPopulation-employed) > population;
 	}
 }

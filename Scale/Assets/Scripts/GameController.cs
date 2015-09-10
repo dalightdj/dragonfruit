@@ -68,4 +68,16 @@ public class GameController : MonoBehaviour {
 	public void decreaseMaxPopulation(){
 		populationManager.decreaseMaxPopulation ();
 	}
+
+	public void increaseEmployment(int population){
+		populationManager.increaseEmployment (population);
+	}
+
+	public void decreaseEmployment(int population){
+		populationManager.decreaseEmployment (population);
+	}
+
+	public bool hasSufficientUnemployed(int population){
+		return populationManager.hasSufficientUnemployed (population);
+	}
 }
