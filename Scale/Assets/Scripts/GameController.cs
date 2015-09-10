@@ -43,9 +43,11 @@ public class GameController : MonoBehaviour {
 		//A simple countdown
 		time += Time.deltaTime;
 		for(int i = 0; i<scoreTexts.Length; i++){
-			scoreTexts[i].GetComponent<Text>().text = string.Format("{0:n0}", ((timeLimit+0.5)-time));
-		}
+			Text textComponent = scoreTexts[i].GetComponent<Text>();
 
+			textComponent.text = string.Format("{0:n0}", ((timeLimit+0.5)-time));
+			textComponent.text = textComponent.text + "  Pop:" + totalPopulation + "  Mat:" + totalMaterial + "  Pol:" + totalPollution + "  Food:" + totalFood;
+		}
 
 
 		//END GAME
