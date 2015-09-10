@@ -7,7 +7,7 @@ public class BuildMenuScript : MonoBehaviour {
 
 	public enum Direction {UP, DOWN, LEFT, RIGHT};
 	public GameObject[] buildMenus;//0=DOWN, 1=LEFT, 2=UP, 3=RIGHT
-	//public GameObject tile;
+	public GameObject tile;
 
 	//for building buildings
 	public Button[] buildingOptions;//the building options available in the build menu
@@ -21,10 +21,10 @@ public class BuildMenuScript : MonoBehaviour {
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
-		//callMenu (Direction.UP, null);
+		//callMenu (Direction.UP, tile);
 		//callMenu (Direction.DOWN, tile);
-		//callMenu (Direction.LEFT, null);
-		//callMenu (Direction.RIGHT, null);
+		//callMenu (Direction.LEFT, tile);
+		//callMenu (Direction.RIGHT, tile);
 	}
 	
 	// Update is called once per frame
@@ -68,6 +68,9 @@ public class BuildMenuScript : MonoBehaviour {
 		}
 		print ("index 0:" + selectedTiles [0]);
 
+		for (int i = 0; i<tileHighlightLights.Length; i++) {
+			print ("TILE ARRAY: " + tileHighlightLights[i]);
+		}
 
 		highlightTile (tile, highlightColor, lightGameObject);
 
@@ -137,16 +140,10 @@ public class BuildMenuScript : MonoBehaviour {
 
 
 	public void BuildBuilding(Button button, GameObject menu){
-		print("index " + 0 + ":" + selectedTiles[0]);
 		string buttonAsString = button.ToString().Split('(', ' ')[0];
 
 		string getIndex = button.transform.parent.parent.gameObject.ToString().Substring(9, 1);
 		int index = int.Parse (getIndex);
-
-		print (index);
-		for (int i = 0; i<selectedTiles.Length; i++) {
-			print("index " + i + ":" + selectedTiles[i]);
-		}
 
 		TileScript selectedTileScript = selectedTiles [index].
 			GetComponent<TileScript>();
@@ -160,8 +157,10 @@ public class BuildMenuScript : MonoBehaviour {
 			if(buttonAsString.Equals(buildingAsString)){
 				selectedTileScript.building = buildings[i];
 				selectedTileScript.build ();
+
+				//remove highlight and close menu
+				Destroy (tileHighlightLights[index]);
 				closeMenu(menu);
-				Destroy (tileHighlightLights[i]);
 				return;
 			}
 		}
