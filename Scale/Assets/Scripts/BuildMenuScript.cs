@@ -109,30 +109,7 @@ public class BuildMenuScript : MonoBehaviour {
 		Vector3 raise = new Vector3 (0,1,0);
 		lightGameObject.transform.position = tile.transform.position + raise;		
 	}
-
-
-	/*
-	private void asdf(GameObject menu){
-		//retrieve building options menu
-		GameObject buildingOptionsList = null;
-		foreach (Transform child in menu.transform) {
-			if(child.gameObject.tag.Equals("BuildingOptionsList")){
-				buildingOptionsList = child.gameObject;
-				break;
-			}
-		}
-		
-		//populate the building options menu
-		foreach (Transform child in buildingOptionsList.transform) {
-			Destroy(child.gameObject);
-		}
-		for (int i = 0; i<buildingOptions.Length; i++) {
-			Button newChild = Instantiate (buildingOptions[i]);
-			newChild.transform.SetParent(buildingOptionsList.transform, false);
-		}
-
-		menu.SetActive (true);
-	}*/
+	
 
 	public void closeMenu(GameObject menu){
 		menu.SetActive (false);

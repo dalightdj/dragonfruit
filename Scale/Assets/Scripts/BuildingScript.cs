@@ -3,14 +3,19 @@ using System.Collections;
 
 public class BuildingScript : MonoBehaviour {
 
-	public int population;
-	public int material;
-	public int pollution;
-	public int food;
+	public int populationGrowth;
+	public int materialGrowth;
+	public int pollutionGrowth;
+	public int foodGrowth;
+
+	public int populationCost;
+	public int materialCost;
+	public int pollutionCost;
+	public int employmentCost;
 
 	void Start(){
 		GameController gc = GameController.gameController;
-		gc.addResources (population, material, pollution, food);
+		gc.addResources (populationGrowth, materialGrowth, pollutionGrowth, foodGrowth);
 	}
 
 }

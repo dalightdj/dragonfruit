@@ -195,6 +195,9 @@ MonoBehaviour:
   material: 0
   pollution: 0
   food: 0
+  tileType: 0
+  tile: {fileID: 0}
+  building: {fileID: 0}
 --- !u!114 &11491338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,10 +209,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d12cf4f3031eb741819c93090ef6ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  population: 0
-  material: 10
-  pollution: 5
-  food: 0
+  populationGrowth: 0
+  materialGrowth: 0
+  pollutionGrowth: 0
+  foodGrowth: 0
+  populationCost: 0
+  materialCost: 0
+  pollutionCost: 0
+  employmentCost: 0
 --- !u!135 &13576412
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -228,7 +235,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 732ef7eae9acf194fad1f47d86eadcff, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 175840}
