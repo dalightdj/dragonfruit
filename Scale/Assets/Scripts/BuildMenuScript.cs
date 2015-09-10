@@ -69,7 +69,7 @@ public class BuildMenuScript : MonoBehaviour {
 		print ("index 0:" + selectedTiles [0]);
 
 
-		highlightTile (tile, highlightColor);
+		highlightTile (tile, highlightColor, lightGameObject);
 
 		//retrieve building options menu
 		GameObject buildingOptionsList = null;
