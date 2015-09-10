@@ -63,6 +63,13 @@ public class GameController : MonoBehaviour {
 		totalFood += food;
 	}
 
+	public bool sufficientResourses(int population, int material, int pollution, int food){
+		if (totalPopulation < population || totalMaterial < material || totalPollution < pollution || totalFood < food) {
+			return false;
+		}
+		return true;
+	}
+
 	public void increaseMaxPopulation(){
 		populationManager.increaseMaxPopulation ();
 	}
