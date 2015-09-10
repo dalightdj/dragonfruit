@@ -12,6 +12,10 @@ public class Touch_Input : MonoBehaviour {
 	private BuildMenuScript BMS;
 	
 	public Material selectedMaterial;
+
+	//for highlighting
+	private Color highLightColor;
+	private String tag;
 	
 	/*Variables for GUI rotation*/
 	private float rotAngle = 0;
@@ -35,13 +39,14 @@ public class Touch_Input : MonoBehaviour {
 		touches = Input.touches;
 		foreach (Touch t in touches) {
 			
-			
+			//when the touch first happens.
 			if (t.phase == TouchPhase.Began) {
 				
 				Ray screenRay = Camera.main.ScreenPointToRay (t.position);
 				
 				RaycastHit hit;
-				
+				//if the ray hits an object we add it to the touches we are going to use map.
+				//the key in the map is the touch and the value is a reference to the object first touched.
 				if (Physics.Raycast (screenRay, out hit)) {
 					print ("User tapped on game object " + hit.collider.gameObject.name);
 					GameObject selectedObject_Touch = hit.collider.gameObject;
@@ -56,38 +61,48 @@ public class Touch_Input : MonoBehaviour {
 			
 		}
 		
-		
+		//now we iterate through all usable touches
 		foreach( KeyValuePair<Touch, GameObject> tch in touches_for_use){
 			
-			
+			//default direction.
 			BuildMenuScript.Direction dir = BuildMenuScript.Direction.UP;
-			
+
+			//Get the change in positions of the touch from its last check.
 			Vector2 moved = tch.Key.deltaPosition;
-			
+
+			//up down swipe
 			if(Math.Abs(moved.x) < Math.Abs (moved.y) ){
-				
+
+				//down swipe
 				if(moved.y < -swipeThreshold){
-					
+					tag = "Down";
 					dir = BuildMenuScript.Direction.DOWN;
+					highLightColor = Color.red;
 					swiped = true;
 					
 				}
+				//up swipe
 				else if (moved.y > swipeThreshold){
-					
+					tag = "Up";
 					dir = BuildMenuScript.Direction.UP;
+					highLightColor = Color.blue;
 					swiped = true;
 				}
 			}
+			//left right swipe
 			else if(Math.Abs(moved.x) > Math.Abs (moved.y) ){
-				
+				//left swipe
 				if(moved.x < -swipeThreshold){
-					
+					tag = "Left";
 					dir = BuildMenuScript.Direction.LEFT;
+					highLightColor = Color.green;
 					swiped = true;
 				}
+				//right swipe
 				else if(moved.x > swipeThreshold){
-					
+					tag = "Right";
 					dir = BuildMenuScript.Direction.RIGHT;
+					highLightColor = Color.magenta;
 					swiped = true;
 				}
 				
@@ -96,33 +111,15 @@ public class Touch_Input : MonoBehaviour {
 			
 			if(swiped){
 				BMS.callMenu(dir, tch.Value);
+				startLight(tch.Value);
 				removeTouch(tch.Key);
+
 			}
-			
-			
-			
-			/*Ray screenRay = Camera.main.ScreenPointToRay (tch.Key.position);
-					
-					RaycastHit hit;
-					
-					if (Physics.Raycast (screenRay, out hit)) {
-						print ("User ended swipe on game object: " + hit.collider.gameObject.name);
-						GameObject object_Touched = hit.collider.gameObject;
-
-					TileEnum dir = object_Touched.GetComponent<TileEnum>();
-
-						BMS.callMenu(dir.Tiles_Loc ,tch.Key.position);
-
-					Destroy (object_Touched);
-					touches_for_use.Remove(tch.Key);
-					} else {
-						print ("end phase landed on");
-					}*/
-			
-			
+						
 		}
 		
-		
+		//-----------mouse methods--------------------
+
 		if (Input.GetMouseButtonDown (0)) {
 			
 			MouseOrigin = Input.mousePosition;
@@ -133,15 +130,7 @@ public class Touch_Input : MonoBehaviour {
 				print ("User tapped on game object " + hit.collider.gameObject.name);
 				GameObject selectedObject_Mouse = hit.collider.gameObject;
 				
-				
-				//BMS.callMenu(BuildMenuScript.Direction.DOWN);
-				/*Get the pivot*/
-				//pivotPoint = new Vector2(Screen.width / 2, Screen.height / 2);
-				//GUIUtility.RotateAroundPivot(, pivotPoint);
-				//GUI.Label(new Rect(Input.mousePosition.x, Input.mousePosition.y, 100,100),"X position: " + t.position.x + "y coordinate: " + t.position.y );
-				
-				
-				//Destroy (selectedObject_Mouse);
+
 			} else {
 				print ("nada");
 			}
@@ -171,11 +160,23 @@ public class Touch_Input : MonoBehaviour {
 		}
 		
 	}
-	
+	//removes the touch from the map and also turns swiped to false.
 	void removeTouch(Touch t){
 		
 		touches_for_use.Remove (t);
 		swiped = false;
+		
+	}
+	//adds the highlgihting for a given tile. will add a point light 1 unit above teh given game object
+	void startLight(GameObject obj){
+		
+		GameObject lightGameObject = new GameObject("The Light");
+		Light lightComp = lightGameObject.AddComponent<Light>();
+		lightComp.color = highLightColor;
+		lightGameObject.tag = tag;
+		Vector3 raise = new Vector3 (0,1,0);
+		lightGameObject.transform.position = obj.transform.position + raise;
+		
 		
 	}
 }
