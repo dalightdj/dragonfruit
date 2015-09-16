@@ -16,7 +16,8 @@ public class GameController : MonoBehaviour {
 	private int totalPollution;
 	private int totalFood;
 
-	private PopulationManagerScript populationManager = new PopulationManagerScript();
+	private PopulationManagerScript populationManager;
+	private FoodManagerScript foodManager;
 	
 	//Ensures GameController is a singleton
 	void Awake () 
@@ -29,6 +30,9 @@ public class GameController : MonoBehaviour {
 		{
 			gameController = this;
 		}
+
+		populationManager = gameObject.AddComponent<PopulationManagerScript>();
+		foodManager = gameObject.AddComponent<FoodManagerScript> ();
 	}
 
 
@@ -79,7 +83,7 @@ public class GameController : MonoBehaviour {
 		populationManager.addEmployed (increase);
 	}
 
-	public bool hasSufficientUnemployed(int population){
+	public bool sufficientUnemployed(int population){
 		return populationManager.hasSufficientUnemployed (population);
 	}
 }
