@@ -43,24 +43,36 @@ public class BuildMenuScript : MonoBehaviour {
 		print ("index 0:" + selectedTiles [0]);
 		print ("----------------------");
 		if (dir == Direction.DOWN) {
+			if(tileHighlightLights[0]!=null){
+				return;
+			}
 			menu = buildMenus[0];
 			selectedTiles[0] = tile;
 			tileHighlightLights[0] = lightGameObject;
 			highlightColor = Color.red;
 		}
-		else if (dir == Direction.LEFT) {
+		else if (dir == Direction.LEFT ) {
+			if(tileHighlightLights[1]!=null){
+				return;
+			}
 			menu = buildMenus[1];
 			selectedTiles[1] = tile;
 			tileHighlightLights[1] = lightGameObject;
 			highlightColor = Color.blue;
 		}
 		else if (dir == Direction.UP) {
+			if(tileHighlightLights[2]!=null){
+				return;
+			}
 			menu = buildMenus[2];
 			selectedTiles[2] = tile;
 			tileHighlightLights[2] = lightGameObject;
 			highlightColor = Color.green;
 		}
 		else{//(dir == Direction.RIGHT) {
+			if(tileHighlightLights[3]!=null){
+				return;
+			}
 			menu = buildMenus[3];
 			selectedTiles[3] = tile;
 			tileHighlightLights[3] = lightGameObject;
@@ -137,6 +149,7 @@ public class BuildMenuScript : MonoBehaviour {
 
 				//remove highlight and close menu
 				Destroy (tileHighlightLights[index]);
+				tileHighlightLights[index] = null;
 				closeMenu(menu);
 				return;
 			}
