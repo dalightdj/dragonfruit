@@ -22,8 +22,8 @@ public class BuildMenuScript : MonoBehaviour {
 		//	asdf (buildMenus[i]);
 		//}
 		//callMenu (Direction.UP, tile);
-		//callMenu (Direction.DOWN, tile);
-		//callMenu (Direction.LEFT, tile);
+		callMenu (Direction.DOWN, tile);
+		callMenu (Direction.LEFT, tile);
 		//callMenu (Direction.RIGHT, tile);
 	}
 	
@@ -38,10 +38,12 @@ public class BuildMenuScript : MonoBehaviour {
 		GameObject lightGameObject = new GameObject("The Light");
 		Color highlightColor;
 
+		/*
 		print ("tile:" + tile);
 		print (dir);
 		print ("index 0:" + selectedTiles [0]);
 		print ("----------------------");
+		*/
 		if (dir == Direction.DOWN) {
 			if(tileHighlightLights[0]!=null){
 				return;
@@ -78,11 +80,13 @@ public class BuildMenuScript : MonoBehaviour {
 			tileHighlightLights[3] = lightGameObject;
 			highlightColor = Color.magenta;
 		}
+		/*
 		print ("index 0:" + selectedTiles [0]);
 
 		for (int i = 0; i<tileHighlightLights.Length; i++) {
 			print ("TILE ARRAY: " + tileHighlightLights[i]);
 		}
+		*/
 
 		highlightTile (tile, highlightColor, lightGameObject);
 
@@ -109,8 +113,10 @@ public class BuildMenuScript : MonoBehaviour {
 		
 		
 		menu.SetActive (true);
+		/*
 		print("index " + 0 + ":" + selectedTiles[0]);
 		print ("========================");
+		*/
 	}
 
 

@@ -16,7 +16,7 @@ public class TileScript : MonoBehaviour {
 	public void build(){
 		print ("JUST BUILDT");
 		if (building.name.Equals ("House") || building.name.Equals ("Apartment")) {
-			GameController.gameController.increaseMaxPopulation ();
+			GameController.gameController.increaseMaxPopulation (20);
 
 		} else {
 			int employment = 10;
@@ -26,7 +26,7 @@ public class TileScript : MonoBehaviour {
 				print ("CANNOT BUILD");
 				return;
 			}*/
-			GameController.gameController.increaseEmployment(employment);
+			GameController.gameController.addEmployed(employment);
 		}
 		print ("INSTANTITATION");
 			   GameObject build = Instantiate(building);
@@ -40,9 +40,9 @@ public class TileScript : MonoBehaviour {
 			Destroy (building);
 
 			if (building.name.Equals ("House") || building.name.Equals ("Apartment")) {
-				GameController.gameController.decreaseMaxPopulation ();
+				GameController.gameController.increaseMaxPopulation (-20);
 			} else {
-				GameController.gameController.decreaseEmployment (10);
+				GameController.gameController.addEmployed (-10);
 			}
 		}
 	}

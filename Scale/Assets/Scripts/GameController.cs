@@ -57,6 +57,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void addResources(int population, int material, int pollution, int food){
+		print ("Add resources: pop=" + population + " material=" + material + " pollution=" + pollution + " food=" + food);
 		totalPopulation += population;
 		totalMaterial += material;
 		totalPollution += pollution;
@@ -70,20 +71,12 @@ public class GameController : MonoBehaviour {
 		return true;
 	}
 
-	public void increaseMaxPopulation(){
-		populationManager.increaseMaxPopulation ();
+	public void increaseMaxPopulation(int increase){
+		populationManager.increaseMaxPopulation (increase);
 	}
 
-	public void decreaseMaxPopulation(){
-		populationManager.decreaseMaxPopulation ();
-	}
-
-	public void increaseEmployment(int population){
-		populationManager.increaseEmployment (population);
-	}
-
-	public void decreaseEmployment(int population){
-		populationManager.decreaseEmployment (population);
+	public void addEmployed(int increase){
+		populationManager.addEmployed (increase);
 	}
 
 	public bool hasSufficientUnemployed(int population){

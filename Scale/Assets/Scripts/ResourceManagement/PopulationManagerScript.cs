@@ -6,38 +6,28 @@ public class PopulationManagerScript : MonoBehaviour {
 	private int maxPopulation;
 	private int currentPopulation;
 	private int employed;//currentPop - employed = unemployed
-	private int populationGrowthRate = 5;
+	private int populationGrowthRate = 1;
 	public int foodRequirement = 1;
 	
 
 	// Update is called once per frame
 	void Update () {
-		GameController.gameController.addResources (0, 0, 0, -currentPopulation);
-
 		if (currentPopulation + populationGrowthRate <= maxPopulation) {
 			currentPopulation += populationGrowthRate;
 			GameController.gameController.addResources (populationGrowthRate, 0, 0, 0);
 
 		} else {
 			currentPopulation = maxPopulation;
-			GameController.gameController.addResources (maxPopulation-currentPopulation, 0, 0, 0);
+			GameController.gameController.addResources (maxPopulation-(maxPopulation-currentPopulation), 0, 0, 0);
 		}
 	}
 
-	public void increaseMaxPopulation(){
-		maxPopulation += 20;
+	public void increaseMaxPopulation(int increase){
+		maxPopulation += increase;
 	}
 
-	public void decreaseMaxPopulation(){
-		maxPopulation -= 20;
-	}
-
-	public void increaseEmployment(int population){
-		employed += population;
-	}
-
-	public void decreaseEmployment(int population){
-		employed -= population;
+	public void addEmployed(int increase){
+		employed += increase;
 	}
 
 	public bool hasSufficientUnemployed(int population){
