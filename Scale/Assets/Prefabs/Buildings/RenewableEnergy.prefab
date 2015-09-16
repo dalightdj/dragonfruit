@@ -113,10 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d12cf4f3031eb741819c93090ef6ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  populationGrowth: 0
-  materialGrowth: 0
-  pollutionGrowth: 0
-  foodGrowth: 0
+  populationGrowth: 10
+  materialGrowth: 5
+  pollutionGrowth: 15
+  foodGrowth: 20
   populationCost: 0
   materialCost: 0
   pollutionCost: 0
@@ -132,6 +132,38 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4bfa4d705db9bfc4984e895177964c6d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: populationGrowth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: materialGrowth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pollutionGrowth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: foodGrowth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: populationCost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: materialCost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pollutionCost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: employmentCost
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 164862}
