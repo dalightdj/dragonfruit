@@ -45,37 +45,38 @@ public class BuildMenuScript : MonoBehaviour {
 		print ("----------------------");
 		*/
 		if (dir == Direction.DOWN) {
-			if(tileHighlightLights[0]!=null){
+			menu = buildMenus[0];
+			if(menu.activeSelf){
+				//StartCoroutine (Continue (tile, Color.red));
 				return;
 			}
-			menu = buildMenus[0];
 			selectedTiles[0] = tile;
 			tileHighlightLights[0] = lightGameObject;
 			highlightColor = Color.red;
 		}
 		else if (dir == Direction.LEFT ) {
-			if(tileHighlightLights[1]!=null){
+			menu = buildMenus[1];
+			if(menu.activeSelf){
 				return;
 			}
-			menu = buildMenus[1];
 			selectedTiles[1] = tile;
 			tileHighlightLights[1] = lightGameObject;
 			highlightColor = Color.blue;
 		}
 		else if (dir == Direction.UP) {
-			if(tileHighlightLights[2]!=null){
+			menu = buildMenus[2];
+			if(menu.activeSelf){
 				return;
 			}
-			menu = buildMenus[2];
 			selectedTiles[2] = tile;
 			tileHighlightLights[2] = lightGameObject;
 			highlightColor = Color.green;
 		}
 		else{//(dir == Direction.RIGHT) {
-			if(tileHighlightLights[3]!=null){
+			menu = buildMenus[3];
+			if(menu.activeSelf){
 				return;
 			}
-			menu = buildMenus[3];
 			selectedTiles[3] = tile;
 			tileHighlightLights[3] = lightGameObject;
 			highlightColor = Color.magenta;
@@ -130,6 +131,11 @@ public class BuildMenuScript : MonoBehaviour {
 	
 
 	public void closeMenu(GameObject menu){
+		int index = getIndex (menu);
+
+		//remove highlight and close menu
+		Destroy (tileHighlightLights[index]);
+		tileHighlightLights[index] = null;
 		menu.SetActive (false);
 	}
 
@@ -137,8 +143,7 @@ public class BuildMenuScript : MonoBehaviour {
 	public void BuildBuilding(Button button, GameObject menu){
 		string buttonAsString = button.ToString().Split('(', ' ')[0];
 
-		string getIndex = button.transform.parent.parent.gameObject.ToString().Substring(9, 1);
-		int index = int.Parse (getIndex);
+		int index = getIndex (menu);
 
 		TileScript selectedTileScript = selectedTiles [index].
 			GetComponent<TileScript>();
@@ -153,12 +158,27 @@ public class BuildMenuScript : MonoBehaviour {
 				selectedTileScript.building = buildings[i];
 				selectedTileScript.build ();
 
-				//remove highlight and close menu
-				Destroy (tileHighlightLights[index]);
-				tileHighlightLights[index] = null;
 				closeMenu(menu);
 				return;
 			}
 		}
 	}
+
+	private int getIndex(GameObject menu){
+		string getIndex = menu.ToString().Substring(9, 1);
+		int index = int.Parse (getIndex);
+		return index;
+	}
+
+	/*
+	IEnumerator Continue(Tile tile, Color col){
+
+		//what to do before waiting
+
+		yield return new WaitForSeconds (1);
+
+
+		//what to do after waiting
+	}
+	*/
 }

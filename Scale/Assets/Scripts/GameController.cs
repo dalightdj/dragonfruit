@@ -11,10 +11,10 @@ public class GameController : MonoBehaviour {
 	private float time;
 	private GameObject[] scoreTexts;//the Text components that will show the score
 	
-	private int totalPopulation;
-	private int totalMaterial;
-	private int totalPollution;
-	private int totalFood;
+	private float totalPopulation;
+	private float totalMaterial;
+	private float totalPollution;
+	private float totalFood = 150;
 
 	private PopulationManagerScript populationManager;
 	private FoodManagerScript foodManager;
@@ -50,7 +50,15 @@ public class GameController : MonoBehaviour {
 			Text textComponent = scoreTexts[i].GetComponent<Text>();
 
 			textComponent.text = string.Format("{0:n0}", ((timeLimit+0.5)-time));
-			textComponent.text = textComponent.text + "  Pop:" + totalPopulation + "  Mat:" + totalMaterial + "  Pol:" + totalPollution + "  Food:" + totalFood;
+			//textComponent.text = textComponent.text + "  Pop:" + totalPopulation + "  Mat:" + totalMaterial + "  Pol:" + totalPollution + "  Food:" + totalFood;
+			textComponent.text = textComponent.text + " Pop:";
+			textComponent.text = textComponent.text + string.Format ("{0:n0}", totalPopulation);
+			textComponent.text = textComponent.text + " Mat:";
+			textComponent.text = textComponent.text + string.Format ("{0:n0}", totalMaterial);
+			textComponent.text = textComponent.text + " Pol:";
+			textComponent.text = textComponent.text + string.Format ("{0:n0}", totalPollution);
+			textComponent.text = textComponent.text + " Food:";
+			textComponent.text = textComponent.text + string.Format ("{0:n0}", totalFood);
 		}
 
 
@@ -60,7 +68,11 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public void addResources(int population, int material, int pollution, int food){
+	public void addResourceGrowthRate(int population, int material, int pollution, int food){
+
+	}
+
+	public void addResources(float population, float material, float pollution, float food){
 		print ("Add resources: pop=" + population + " material=" + material + " pollution=" + pollution + " food=" + food);
 		totalPopulation += population;
 		totalMaterial += material;
