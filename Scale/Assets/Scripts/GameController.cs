@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour {
 
 	private PopulationManagerScript populationManager;
 	private FoodManagerScript foodManager;
+	private PollutionManagerScript pollutionManager;
+	private MaterialManagerScript materialManager;
 	
 	//Ensures GameController is a singleton
 	void Awake () 
@@ -33,6 +35,8 @@ public class GameController : MonoBehaviour {
 
 		populationManager = gameObject.AddComponent<PopulationManagerScript>();
 		foodManager = gameObject.AddComponent<FoodManagerScript> ();
+		pollutionManager = gameObject.AddComponent <PollutionManagerScript> ();
+		materialManager = gameObject.AddComponent<MaterialManagerScript> ();
 	}
 
 

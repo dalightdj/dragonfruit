@@ -22,8 +22,10 @@ public class PopulationManagerScript : MonoBehaviour {
 
 		count += populationGrowthRate;
 
-		if (count / 1000 >= 1) {
+		print ("Max pop:" + maxPopulation);
+		if (count / 100 >= 1) {
 			if(currentPopulation+1 <= maxPopulation){
+				currentPopulation += 1;
 				GameController.gameController.addResources(1, 0, 0, 0);
 			}
 			count = 0;

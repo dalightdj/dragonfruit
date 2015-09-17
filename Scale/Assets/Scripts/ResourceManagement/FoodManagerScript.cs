@@ -10,7 +10,7 @@ public class FoodManagerScript : MonoBehaviour {
 	void Update () {
 		count += foodGrowthRate;
 
-		if (count/1000 >= 1) {
+		if (count/100 >= 1) {
 			GameController.gameController.addResources (0, 0, 0, 1);
 			count = 0;
 		}
