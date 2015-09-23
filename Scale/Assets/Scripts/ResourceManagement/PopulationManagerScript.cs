@@ -16,27 +16,10 @@ public class PopulationManagerScript : ResourceManagementScript {
 
 	// Update is called once per frame
 	void Update () {
-		/*print ("Population");
 		GameController.gameController.addResources (0, 0, 0, -(foodRequirementPerPerson*currentPopulation));
 
-		count += populationGrowthRate;
-
-
-		print ("Max pop:" + maxPopulation);
-		if (count/1000 >= 1) {
-			if(currentPopulation+1 <= maxPopulation){
-				currentPopulation += 1;
-				GameController.gameController.addResources(1, 0, 0, 0);
-			}
-			count = 0;
-		}
-		*/
-
-		GameController.gameController.addResources (0, 0, 0, -(foodRequirementPerPerson*currentPopulation));
-
-		print ("Max pop:" + maxPopulation);
-		print ("Current pop:" + currentPopulation);
 		if (GameController.gameController.getTotalPopulation() < maxPopulation) {
+			currentPopulation++;
 			base.Update ();
 		}
 	}

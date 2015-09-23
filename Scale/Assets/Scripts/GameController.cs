@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void addResources(float population, float material, float pollution, float food){
-		print ("Add resources: pop=" + population + " material=" + material + " pollution=" + pollution + " food=" + food);
+		//print ("Add resources: pop=" + population + " material=" + material + " pollution=" + pollution + " food=" + food);
 		totalPopulation += population;
 		totalMaterial += material;
 		totalPollution += pollution;
