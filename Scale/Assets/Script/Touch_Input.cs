@@ -111,7 +111,7 @@ public class Touch_Input : MonoBehaviour {
 			
 			if(swiped){
 				BMS.callMenu(dir, tch.Value);
-				startLight(tch.Value);
+				//startLight(tch.Value);
 				removeTouch(tch.Key);
 
 			}

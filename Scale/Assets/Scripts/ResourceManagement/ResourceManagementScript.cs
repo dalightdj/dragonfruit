@@ -7,10 +7,6 @@ public abstract class ResourceManagementScript : MonoBehaviour {
 	float count = 0;
 	float growthRateDenominator = 1000;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	public virtual void Update () {
