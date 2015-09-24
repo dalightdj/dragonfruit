@@ -14,16 +14,25 @@ public class TileScript : MonoBehaviour {
 	public enum TileType{WATER, LAND, FOREST};
 
 	public void build(){
-		print ("JUST BUILDT");
-		if (building.name.Equals ("House") || building.name.Equals ("Apartment")) {
-			GameController.gameController.increaseMaxPopulation (20);
 
+		//UNCOMMENT THIS FOR BUILDING RESTRICTION
+		/*BuildingScript buildingScript = building.GetComponent<BuildingScript> ();
+		if(!GameController.gameController.sufficientResourses(buildingScript.populationCost, buildingScript.materialCost, buildingScript.pollutionCost, 0)){
+			print ("NOT ENOUGH RESOURCES");
+		}
+		*/
+
+		if (building.name.Equals ("House")) {
+			GameController.gameController.increaseMaxPopulation (10);
+		} 
+		else if(building.name.Equals ("Apartment")){
+			GameController.gameController.increaseMaxPopulation (20);
 		} else {
 			int employment = 10;
 
 			//UNCOMMENT THIS FOR BUILDING RESTRICTION
 			 /* if(!GameController.gameController.hasSufficientUnemployed(employment)){
-				print ("CANNOT BUILD");
+				print ("NOT ENOUGH UNEMPLOYED");
 				return;
 			}*/
 			GameController.gameController.addEmployed(employment);
@@ -39,7 +48,10 @@ public class TileScript : MonoBehaviour {
 		if (building != null) {
 			Destroy (building);
 
-			if (building.name.Equals ("House") || building.name.Equals ("Apartment")) {
+			if (building.name.Equals ("House")) {
+				GameController.gameController.increaseMaxPopulation (-10);
+			} 
+			else if(building.name.Equals ("Apartment")){
 				GameController.gameController.increaseMaxPopulation (-20);
 			} else {
 				GameController.gameController.addEmployed (-10);
