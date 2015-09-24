@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour {
 	public static GameController gameController;
 
 	public int timeLimit = 60;//the losing condition i.e. 60 seconds
-	public float growthRateDenominator = 1000000;
 
 	private float time;
 	private GameObject[] scoreTexts;//the Text components that will show the score
@@ -66,14 +65,13 @@ public class GameController : MonoBehaviour {
 			textComponent.text = textComponent.text + string.Format ("{0:n0}", totalFood);
 		}
 
-
 		//END GAME
-		if (time >= timeLimit) {
+		if ((time >= timeLimit) || (totalPopulation<0)) {
 			Application.LoadLevel("Ending");
 		}
 	}
 
-	public void addResourceGrowthRate(int population, int material, int pollution, int food){
+	public void addResourceGrowthRate(float population, float material, float pollution, float food){
 		populationManager.increaseGrowthRate (population);
 		materialManager.increaseGrowthRate (material);
 		pollutionManager.increaseGrowthRate (pollution);
@@ -92,7 +90,7 @@ public class GameController : MonoBehaviour {
 		return (int) totalPopulation;
 	}
 
-	public bool sufficientResourses(int population, int material, int pollution, int food){
+	public bool sufficientResourses(float population, float material, float pollution, float food){
 		if (totalPopulation < population || totalMaterial < material || totalPollution < pollution || totalFood < food) {
 			return false;
 		}

@@ -16,7 +16,12 @@ public class PopulationManagerScript : ResourceManagementScript {
 
 	// Update is called once per frame
 	void Update () {
-		GameController.gameController.addResources (0, 0, 0, -(foodRequirementPerPerson*currentPopulation));
+
+		if (GameController.gameController.sufficientResourses (0, 0, 0, foodRequirementPerPerson * currentPopulation)) {
+			GameController.gameController.addResources (0, 0, 0, -(foodRequirementPerPerson * currentPopulation));
+		} else {
+			GameController.gameController.addResources (-0.5f, 0, 0, 0);
+		}
 
 		if (GameController.gameController.getTotalPopulation() < maxPopulation) {
 			currentPopulation++;
