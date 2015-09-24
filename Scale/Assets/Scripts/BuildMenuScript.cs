@@ -21,10 +21,10 @@ public class BuildMenuScript : MonoBehaviour {
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
-		//callMenu (Direction.UP, tile);
+		callMenu (Direction.UP, tile);
 		callMenu (Direction.DOWN, tile);
 		callMenu (Direction.LEFT, tile);
-		//callMenu (Direction.RIGHT, tile);
+		callMenu (Direction.RIGHT, tile);
 	}
 	
 	// Update is called once per frame
@@ -93,7 +93,12 @@ public class BuildMenuScript : MonoBehaviour {
 
 		//retrieve building options menu
 		GameObject buildingOptionsList = null;
-		foreach (Transform child in menu.transform) {
+		//print (menu);
+		//print(menu.transform.Find ("ScrollView"));
+		GameObject scrollView = menu.transform.Find ("ScrollView").gameObject;
+		int l = 0;
+		foreach (Transform child in scrollView.transform) {
+			print ("child" + l++ + " " + child);
 			if(child.gameObject.tag.Equals("BuildingOptionsList")){
 				buildingOptionsList = child.gameObject;
 				break;
