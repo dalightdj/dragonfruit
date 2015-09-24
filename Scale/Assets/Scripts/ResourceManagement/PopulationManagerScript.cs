@@ -6,7 +6,7 @@ public class PopulationManagerScript : ResourceManagementScript {
 	private int maxPopulation = 50;
 	private int currentPopulation = 5;
 	private int employed;//currentPop - employed = unemployed
-	public float foodRequirementPerPerson = 0.01f;
+	public float foodRequirementPerPerson = 0.001f;
 
 	// Use this for initialization
 	void Start () {
