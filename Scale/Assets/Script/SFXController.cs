@@ -10,7 +10,9 @@ public class SFXController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		source = GetComponent<AudioSource>();
+		//source = GetComponent<AudioSource>();
+
+
 
 	}
 	

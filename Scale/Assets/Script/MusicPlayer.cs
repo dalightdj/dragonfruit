@@ -10,7 +10,10 @@ public class MusicPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		source = GetComponent<AudioSource>();
+		//source = GetComponent<AudioSource>();
+		source.clip = music [0];
+		source.loop = true;
+		source.Play ();
 
 	}
 	
