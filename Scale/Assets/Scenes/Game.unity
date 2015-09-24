@@ -19788,6 +19788,14 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 26
       objectReference: {fileID: 0}
+    - target: {fileID: 161440, guid: a80fa10c346b5f64f8b5ea17297f35b3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11407870, guid: a80fa10c346b5f64f8b5ea17297f35b3, type: 2}
+      propertyPath: tile
+      value: 
+      objectReference: {fileID: 1422141201}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a80fa10c346b5f64f8b5ea17297f35b3, type: 2}
   m_IsPrefabParent: 0
@@ -24369,6 +24377,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9de8e799a8116a540a536f4f27b3e921, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1422141201 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 152892, guid: 9de8e799a8116a540a536f4f27b3e921, type: 2}
+  m_PrefabInternal: {fileID: 1987542914}
 --- !u!1001 &1422312667
 Prefab:
   m_ObjectHideFlags: 0
