@@ -9,6 +9,7 @@ TagManager:
   - BuildingOptionsList
   - Workplace
   - Music
+  - SFX
   layers:
   - Default
   - TransparentFX

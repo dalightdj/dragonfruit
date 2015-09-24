@@ -3,6 +3,8 @@ using System.Collections;
 
 public class TileScript : MonoBehaviour {
 
+	private SFXController SFX;
+
 	public int population;
 	public int material;
 	public int pollution;
@@ -12,6 +14,15 @@ public class TileScript : MonoBehaviour {
 	public GameObject building;
 
 	public enum TileType{WATER, LAND, FOREST};
+
+	void Start(){
+		GameObject musicPlayer = GameObject.FindWithTag ("SFX");
+		SFX = musicPlayer.GetComponent ("SFXController") as SFXController;
+
+		SFX.playClip (0);
+
+
+	}
 
 	public void build(){
 
@@ -38,9 +49,10 @@ public class TileScript : MonoBehaviour {
 			GameController.gameController.addEmployed(employment);
 		}
 		print ("INSTANTITATION");
-			   GameObject build = Instantiate(building);
+			SFX.playClip (1);
+				 GameObject build = Instantiate(building);
 			   build.transform.position = tile.transform.position;
-		print (build.transform.position);
+			print (build.transform.position);
 	}
 
 
