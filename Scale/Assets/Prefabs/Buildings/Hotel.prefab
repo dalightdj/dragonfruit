@@ -113,14 +113,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d12cf4f3031eb741819c93090ef6ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  populationGrowth: 10
-  materialGrowth: 5
-  pollutionGrowth: 15
-  foodGrowth: 20
+  populationGrowth: 2
+  materialGrowth: 0
+  pollutionGrowth: 5
+  foodGrowth: 0
   populationCost: 0
-  materialCost: 0
-  pollutionCost: 0
-  employmentCost: 0
+  materialCost: 20
+  pollutionCost: 30
+  employmentCost: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -134,19 +134,19 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 4b1214505f6880b4f9a278d1669a75be, type: 2}
     - target: {fileID: 0}
       propertyPath: populationGrowth
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: materialGrowth
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: pollutionGrowth
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: foodGrowth
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: populationCost
@@ -154,15 +154,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: materialCost
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: pollutionCost
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: employmentCost
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
