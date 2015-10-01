@@ -27,32 +27,30 @@ public class TileScript : MonoBehaviour {
 	public void build(){
 
 		//UNCOMMENT THIS FOR BUILDING RESTRICTION
-		/*BuildingScript buildingScript = building.GetComponent<BuildingScript> ();
-		if(!GameController.gameController.sufficientResourses(buildingScript.populationCost, buildingScript.materialCost, buildingScript.pollutionCost, 0)){
+		BuildingScript buildingScript = building.GetComponent<BuildingScript> ();
+		if (!GameController.gameController.sufficientResourses (buildingScript.populationCost, buildingScript.materialCost, 0, 0)) {
 			print ("NOT ENOUGH RESOURCES");
-		}
-		*/
-
-		if (building.name.Equals ("House")) {
-			GameController.gameController.increaseMaxPopulation (10);
-		} 
-		else if(building.name.Equals ("Apartment")){
-			GameController.gameController.increaseMaxPopulation (20);
 		} else {
-			int employment = 10;
+			if (building.name.Equals ("House")) {
+				GameController.gameController.increaseMaxPopulation (10);
+			} else if (building.name.Equals ("Apartment")) {
+				GameController.gameController.increaseMaxPopulation (20);
+			} else {
+				int employment = 10;
 
-			//UNCOMMENT THIS FOR BUILDING RESTRICTION
-			 /* if(!GameController.gameController.hasSufficientUnemployed(employment)){
-				print ("NOT ENOUGH UNEMPLOYED");
-				return;
-			}*/
-			GameController.gameController.addEmployed(employment);
-		}
-		print ("INSTANTITATION");
+				//UNCOMMENT THIS FOR BUILDING RESTRICTION
+				 if(!GameController.gameController.sufficientUnemployed(employment)){
+					print ("NOT ENOUGH UNEMPLOYED");
+					return;
+				}
+				GameController.gameController.addEmployed (employment);
+			}
+			print ("INSTANTITATION");
 			SFX.playClip (1);
-				 GameObject build = Instantiate(building);
-			   build.transform.position = tile.transform.position;
-			print (build.transform.position);
+			GameController.gameController.addResources (-buildingScript.populationCost, -buildingScript.materialCost, buildingScript.pollutionCost, 0);
+			GameObject build = Instantiate (building);
+			build.transform.position = tile.transform.position;
+		}
 	}
 
 
