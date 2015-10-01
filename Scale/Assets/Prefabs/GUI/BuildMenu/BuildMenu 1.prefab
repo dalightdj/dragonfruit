@@ -62,7 +62,7 @@ GameObject:
   - 222: {fileID: 22246502}
   - 114: {fileID: 11446672}
   m_Layer: 5
-  m_Name: BuildMenu
+  m_Name: BuildMenu 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
