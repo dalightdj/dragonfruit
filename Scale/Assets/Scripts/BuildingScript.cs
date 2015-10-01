@@ -16,7 +16,7 @@ public class BuildingScript : MonoBehaviour {
 	public int employmentCost;
 
 	void Start(){
-		//print (this);
+		//print ("Building Script");
 		GameController gc = GameController.gameController;
 		gc.addResourceGrowthRate (populationGrowth, materialGrowth, pollutionGrowth, foodGrowth);
 	}

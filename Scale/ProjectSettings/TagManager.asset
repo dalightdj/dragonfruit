@@ -10,6 +10,11 @@ TagManager:
   - Workplace
   - Music
   - SFX
+  - Popup
+  - Image
+  - ResourceCostText
+  - ResourceGrowthText
+  - MessageBar
   layers:
   - Default
   - TransparentFX

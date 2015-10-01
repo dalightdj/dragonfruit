@@ -6,7 +6,7 @@ public class PopulationManagerScript : ResourceManagementScript {
 	private int maxPopulation = 50;
 	private int currentPopulation = 5;
 	private int employed;//currentPop - employed = unemployed
-	public float foodRequirementPerPerson = 0.001f;
+	public float foodRequirementPerPerson = 0.0001f;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,7 @@ public class PopulationManagerScript : ResourceManagementScript {
 		if (GameController.gameController.sufficientResourses (0, 0, 0, foodRequirementPerPerson * currentPopulation)) {
 			GameController.gameController.addResources (0, 0, 0, -(foodRequirementPerPerson * currentPopulation));
 		} else {
-			GameController.gameController.addResources (-0.5f, 0, 0, 0);
+			GameController.gameController.addResources (-0.05f, 0, 0, 0);
 		}
 
 		//do not exceed max population

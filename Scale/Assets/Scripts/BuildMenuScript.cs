@@ -7,6 +7,7 @@ public class BuildMenuScript : MonoBehaviour {
 
 	public enum Direction {UP, DOWN, LEFT, RIGHT};
 	public GameObject[] buildMenus;//0=DOWN, 1=LEFT, 2=UP, 3=RIGHT
+	public GameObject[] popups;
 	public GameObject tile;
 
 	//for building buildings
@@ -25,6 +26,18 @@ public class BuildMenuScript : MonoBehaviour {
 		callMenu (Direction.DOWN, tile);
 		callMenu (Direction.LEFT, tile);
 		//callMenu (Direction.RIGHT, tile);
+
+
+		//populate the popup menu array
+		popups = new GameObject[buildMenus.Length];
+		for (int i = 0; i<buildMenus.Length; i++) {
+			foreach(Transform child in buildMenus[i].transform){
+				if(child.gameObject.tag.Equals("Popup")){
+					popups[i] = child.gameObject;
+				}
+			}
+
+		}
 	}
 	
 	// Update is called once per frame
@@ -113,7 +126,7 @@ public class BuildMenuScript : MonoBehaviour {
 			Button newChild = Instantiate (buildingOptions[i]);
 			newChild.transform.SetParent(buildingOptionsList.transform, false);
 			newChild.onClick.AddListener(() => {
-				this.BuildBuilding(newChild, menu);
+				this.openPopup(newChild, menu);
 			});
 		}
 		
@@ -123,6 +136,108 @@ public class BuildMenuScript : MonoBehaviour {
 		print("index " + 0 + ":" + selectedTiles[0]);
 		print ("========================");
 		*/
+	}
+
+	public void openPopup(Button button, GameObject menu){
+		string buttonAsString = button.ToString().Split('(', ' ')[0];
+		
+		int index = getIndex (menu);
+
+		//build sumn		
+		TileScript selectedTileScript = selectedTiles [index].
+			GetComponent<TileScript>();
+		GameObject building = null;		
+		for (int i = 0; i<buildingOptions.Length; i++) {
+			
+			//split the string to get it's name
+			string buildingAsString = buildingOptions[i].ToString().Split('(', ' ')[0];
+			
+			if(buttonAsString.Equals(buildingAsString)){
+				building = buildings[i];				
+				break;
+			}
+		}
+
+		BuildingScript buildingScript = building.GetComponent<BuildingScript> ();
+
+		GameObject popup = popups [index];
+		popup.SetActive (true);
+
+		Transform[] popupChildren = popup.GetComponentsInChildren<Transform> ();//{0 = Image, 1 = ResourceImgs, 2 = ResourceCostTexts, 3 = ResourceGrowthTexts, 4 = CloseButton, 5 = AcceptButton, 6 = MessageBar}
+
+		//print (popup.GetComponentsInParent<RectTransform>());
+
+		//add cost text
+		Text[] resourceCostTexts = null;
+		foreach (Transform t in popupChildren) {
+			if(t.tag.Equals("ResourceCostText")){
+				resourceCostTexts = t.gameObject.GetComponentsInChildren<Text>();
+			}
+		}
+		resourceCostTexts [0].text = buildingScript.materialCost.ToString();
+		resourceCostTexts [1].text = buildingScript.populationCost.ToString();
+		resourceCostTexts [2].text = 0.ToString();
+		resourceCostTexts [3].text = buildingScript.pollutionCost.ToString();
+
+		//add growth rate text
+		Text[] growthRateTexts = popupChildren [3].GetComponentsInChildren<Text> (true);
+		foreach (Transform t in popupChildren) {
+			if(t.tag.Equals("ResourceGrowthText")){
+				growthRateTexts = t.gameObject.GetComponentsInChildren<Text>();
+			}
+		}
+		growthRateTexts [0].text = buildingScript.materialGrowth.ToString();
+		growthRateTexts [1].text = buildingScript.populationGrowth.ToString();
+		growthRateTexts [2].text = buildingScript.foodGrowth.ToString();
+		growthRateTexts [3].text = buildingScript.pollutionGrowth.ToString();
+
+
+		Button image = null;
+		foreach (Transform t in popupChildren) {
+			if(t.tag.Equals("Image")){
+				image = t.gameObject.GetComponent<Button>();
+			}
+		}
+
+		//image = Instantiate(buildingOptions[index]);
+
+		Text messageBar = null;
+		foreach (Transform t in popupChildren) {
+			if(t.tag.Equals("MessageBar")){
+				messageBar = t.gameObject.GetComponent<Text>();
+			}
+		}
+
+		//add message: if cannot build color should be red and should say "Do not have sufficient resources". If can build color should be green and should say "Tap building image to build"
+		if (!GameController.gameController.sufficientResourses (buildingScript.populationCost, buildingScript.materialCost, buildingScript.pollutionCost, 0)) {
+			messageBar.color = Color.red;
+			messageBar.text = "Do not have sufficient resources";
+			return;
+		}
+		if (!GameController.gameController.sufficientUnemployed (buildingScript.employmentCost)) {
+			messageBar.color = Color.red;
+			messageBar.text = "Do not have sufficient unemployed";
+			return;
+		}
+		messageBar.color = Color.green;
+		messageBar.text = "Tap building image to build";
+
+		selectedTileScript.building = building;
+		image.onClick.AddListener(() => {
+			selectedTileScript.build ();
+			closeMenu(menu);
+		});
+
+		//add accept button
+		/*selectedTileScript.building = building;
+		selectedTileScript.build ();
+		closeMenu(menu);*/
+
+
+
+
+
+
 	}
 
 
@@ -142,6 +257,10 @@ public class BuildMenuScript : MonoBehaviour {
 		Destroy (tileHighlightLights[index]);
 		tileHighlightLights[index] = null;
 		menu.SetActive (false);
+	}
+
+	public void closePopup(GameObject popup){
+		popup.SetActive (false);
 	}
 
 
