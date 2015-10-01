@@ -7,18 +7,19 @@ public class BuildMenuScript : MonoBehaviour {
 
 	public enum Direction {UP, DOWN, LEFT, RIGHT};
 	public GameObject[] buildMenus;//0=DOWN, 1=LEFT, 2=UP, 3=RIGHT
-	public GameObject[] popups;
-	public GameObject tile;
+	public GameObject[] popups;//the popup menu for each build menu
+	public GameObject tile;//a tile for testing
+	private GameObject[] selectedTiles = new GameObject[4];//for holding the currently selected tile for each player
+	private GameObject[] tileHighlightLights = new GameObject[4];//for holding the light on the currently selected tile for each player
 
 	//for building buildings
 	public Button[] buildingOptions;//the building options available in the build menu
-	public GameObject[] buildings;//each index of this array should have the corresponding building to the building options
+	public GameObject[] buildings;//each index of this array should have the building corresponding to the building options
 
-	private GameObject[] selectedTiles = new GameObject[4];
-	private GameObject[] tileHighlightLights = new GameObject[4];
 
 	// Use this for initialization
 	void Start () {
+		//For testing
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
@@ -33,7 +34,7 @@ public class BuildMenuScript : MonoBehaviour {
 		for (int i = 0; i<buildMenus.Length; i++) {
 			foreach(Transform child in buildMenus[i].transform){
 				if(child.gameObject.tag.Equals("Popup")){
-					popups[i] = child.gameObject;
+					popups[i] = child.gameObject;//grab the build menu's popup menu
 				}
 			}
 
@@ -59,13 +60,13 @@ public class BuildMenuScript : MonoBehaviour {
 		*/
 		if (dir == Direction.DOWN) {
 			menu = buildMenus[0];
-			if(menu.activeSelf){
+			if(menu.activeSelf){//if the menu is already open
 				//StartCoroutine (Continue (tile, Color.red));
-				return;
+				return;//don't do anything
 			}
-			selectedTiles[0] = tile;
-			tileHighlightLights[0] = lightGameObject;
-			highlightColor = Color.red;
+			selectedTiles[0] = tile;//set player one's tile to the selected tile
+			tileHighlightLights[0] = lightGameObject;//set the light to player one
+			highlightColor = Color.red;//the light will be player one's colour
 		}
 		else if (dir == Direction.LEFT ) {
 			menu = buildMenus[1];
@@ -102,12 +103,11 @@ public class BuildMenuScript : MonoBehaviour {
 		}
 		*/
 
+		//Turn the selection light on
 		highlightTile (tile, highlightColor, lightGameObject);
 
-		//retrieve building options menu
+		//Retrieve building options menu
 		GameObject buildingOptionsList = null;
-		//print (menu);
-		//print(menu.transform.Find ("ScrollView"));
 		GameObject scrollView = menu.transform.Find ("ScrollView").gameObject;
 		int l = 0;
 		foreach (Transform child in scrollView.transform) {
@@ -118,15 +118,16 @@ public class BuildMenuScript : MonoBehaviour {
 			}
 		}
 		
-		//populate the building options menu
+		//Populate the building options menu
 		foreach (Transform child in buildingOptionsList.transform) {
-			Destroy(child.gameObject);
+			Destroy(child.gameObject);//destroy everything that is currently in the options menu
 		}
 		for (int i = 0; i<buildingOptions.Length; i++) {
+			//Repopulate the options menu with the appropriate building options
 			Button newChild = Instantiate (buildingOptions[i]);
 			newChild.transform.SetParent(buildingOptionsList.transform, false);
 			newChild.onClick.AddListener(() => {
-				this.openPopup(newChild, menu);
+				this.openPopup(newChild, menu, i);
 			});
 		}
 		
@@ -138,110 +139,109 @@ public class BuildMenuScript : MonoBehaviour {
 		*/
 	}
 
-	public void openPopup(Button button, GameObject menu){
-		string buttonAsString = button.ToString().Split('(', ' ')[0];
-		
-		int index = getIndex (menu);
+	public void openPopup(Button button, GameObject menu, int buildingOptionIndex){		
+		int index = getIndex (menu);//get the index of this menu which is also the index of the popup menu
 
-		//build sumn		
-		TileScript selectedTileScript = selectedTiles [index].
-			GetComponent<TileScript>();
-		GameObject building = null;		
+		TileScript selectedTileScript = selectedTiles [index].GetComponent<TileScript>();//get the tile that will hold the building we want to build
+		string buttonAsString = button.ToString().Split('(', ' ')[0];//get the button name so that it can be used to find the correct building
+		GameObject building = null;
 		for (int i = 0; i<buildingOptions.Length; i++) {
 			
 			//split the string to get it's name
-			string buildingAsString = buildingOptions[i].ToString().Split('(', ' ')[0];
+			string buildingAsString = buildingOptions[i].ToString().Split('(', ' ')[0];//get the building name so that it can be used to find the correct building
 			
-			if(buttonAsString.Equals(buildingAsString)){
-				building = buildings[i];				
+			if(buttonAsString.Equals(buildingAsString)){//if it is the correct building
+				building = buildings[i];
 				break;
 			}
 		}
 
+		//Get the script that holds all of the cost and growth values for the building
 		BuildingScript buildingScript = building.GetComponent<BuildingScript> ();
 
+		//Get the correct popup and make it visible
 		GameObject popup = popups [index];
 		popup.SetActive (true);
 
+		//Get all popup menu elements
 		Transform[] popupChildren = popup.GetComponentsInChildren<Transform> ();//{0 = Image, 1 = ResourceImgs, 2 = ResourceCostTexts, 3 = ResourceGrowthTexts, 4 = CloseButton, 5 = AcceptButton, 6 = MessageBar}
 
-		//print (popup.GetComponentsInParent<RectTransform>());
-
-		//add cost text
+		//Display resource cost text values
 		Text[] resourceCostTexts = null;
 		foreach (Transform t in popupChildren) {
-			if(t.tag.Equals("ResourceCostText")){
+			if(t.tag.Equals("ResourceCostText")){//find the correct element
 				resourceCostTexts = t.gameObject.GetComponentsInChildren<Text>();
 			}
 		}
-		resourceCostTexts [0].text = buildingScript.materialCost.ToString();
-		resourceCostTexts [1].text = buildingScript.populationCost.ToString();
-		resourceCostTexts [2].text = 0.ToString();
-		resourceCostTexts [3].text = buildingScript.pollutionCost.ToString();
+		//Add the text to the text component
+		resourceCostTexts [0].text = buildingScript.materialCost.ToString("+#;-#;0");
+		resourceCostTexts [1].text = buildingScript.populationCost.ToString("+#;-#;0");
+		resourceCostTexts [2].text = 0.ToString("+#;-#;0");
+		resourceCostTexts [3].text = buildingScript.pollutionCost.ToString("+#;-#;0");
 
-		//add growth rate text
+
+		//Display growth rate text
 		Text[] growthRateTexts = popupChildren [3].GetComponentsInChildren<Text> (true);
 		foreach (Transform t in popupChildren) {
 			if(t.tag.Equals("ResourceGrowthText")){
 				growthRateTexts = t.gameObject.GetComponentsInChildren<Text>();
 			}
 		}
-		growthRateTexts [0].text = buildingScript.materialGrowth.ToString();
-		growthRateTexts [1].text = buildingScript.populationGrowth.ToString();
-		growthRateTexts [2].text = buildingScript.foodGrowth.ToString();
-		growthRateTexts [3].text = buildingScript.pollutionGrowth.ToString();
+		//Add the text to the text component
+		growthRateTexts [0].text = buildingScript.materialGrowth.ToString("+#;-#;0");
+		growthRateTexts [1].text = buildingScript.populationGrowth.ToString("+#;-#;0");
+		growthRateTexts [2].text = buildingScript.foodGrowth.ToString("+#;-#;0");
+		growthRateTexts [3].text = buildingScript.pollutionGrowth.ToString("+#;-#;0");
 
 
-		Button image = null;
+		Transform image = null;
 		foreach (Transform t in popupChildren) {
-			if(t.tag.Equals("Image")){
-				image = t.gameObject.GetComponent<Button>();
+			if(t.tag.Equals("Image")){//get the button from the popup elements
+				image = t;
 			}
 		}
-
-		//image = Instantiate(buildingOptions[index]);
-
+		Button imageButton = image.GetComponent<Button> ();
+		//Destroy (image.gameObject);
+		//image = Instantiate ();
+		//image = Instantiate (buildingOptions[0]);
+		//image.transform.SetParent(popup.transform, false);
+		
+		//Display appropriate message
 		Text messageBar = null;
 		foreach (Transform t in popupChildren) {
-			if(t.tag.Equals("MessageBar")){
+			if(t.tag.Equals("MessageBar")){//get the message bar from the popup elements
 				messageBar = t.gameObject.GetComponent<Text>();
 			}
 		}
-
-		//add message: if cannot build color should be red and should say "Do not have sufficient resources". If can build color should be green and should say "Tap building image to build"
+		//Do not have enough resources
 		if (!GameController.gameController.sufficientResourses (buildingScript.populationCost, buildingScript.materialCost, buildingScript.pollutionCost, 0)) {
 			messageBar.color = Color.red;
 			messageBar.text = "Do not have sufficient resources";
 			return;
 		}
+		//Do not have enought unemployed 
 		if (!GameController.gameController.sufficientUnemployed (buildingScript.employmentCost)) {
 			messageBar.color = Color.red;
 			messageBar.text = "Do not have sufficient unemployed";
 			return;
 		}
+		//Can build
 		messageBar.color = Color.green;
 		messageBar.text = "Tap building image to build";
-
 		selectedTileScript.building = building;
-		image.onClick.AddListener(() => {
+
+
+		imageButton.onClick.RemoveAllListeners ();//to make sure there are no unwanted listeners
+		//Set the button to call the build method of the current building if clicked
+		imageButton.onClick.AddListener(() => {
 			selectedTileScript.build ();
 			closeMenu(menu);
+			popup.SetActive (false);//once building is built, turn off popup
 		});
-
-		//add accept button
-		/*selectedTileScript.building = building;
-		selectedTileScript.build ();
-		closeMenu(menu);*/
-
-
-
-
-
-
 	}
 
 
-	//adds the highlgihting for a given tile. will add a point light 1 unit above teh given game object
+	//Adds the highlgihting for a given tile. will add a point light 1 unit closer to the screen from the given game object
 	void highlightTile(GameObject tile, Color highLightColor, GameObject lightGameObject){		
 		Light lightComp = lightGameObject.AddComponent<Light>();
 		lightComp.color = highLightColor;
