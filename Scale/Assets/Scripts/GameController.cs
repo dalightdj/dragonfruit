@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour {
 
 		//END GAME
 		if ((time >= timeLimit) || (totalPopulation<0)) {
-			Application.LoadLevel("Ending");
+			Application.LoadLevel("EndingPan");
 		}
 	}
 
