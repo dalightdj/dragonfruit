@@ -24,8 +24,8 @@ public class BuildMenuScript : MonoBehaviour {
 		//	asdf (buildMenus[i]);
 		//}
 		//callMenu (Direction.UP, tile);
-		callMenu (Direction.DOWN, tile);
-		callMenu (Direction.LEFT, tile);
+		//callMenu (Direction.DOWN, tile);
+		//callMenu (Direction.LEFT, tile);
 		//callMenu (Direction.RIGHT, tile);
 
 
