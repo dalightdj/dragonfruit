@@ -12,10 +12,10 @@ public class GameController : MonoBehaviour {
 	private float time;
 	private GameObject[] HUDs;//the Text components that will show the score
 	
-	private float totalPopulation;
-	private float totalMaterial;
-	private float totalPollution;
-	private float totalFood = 150;
+	private float totalPopulation = 50;
+	private float totalMaterial = 500;
+	private float totalPollution = 500;
+	private float totalFood = 500;
 
 	private PopulationManagerScript populationManager;
 	private FoodManagerScript foodManager;
