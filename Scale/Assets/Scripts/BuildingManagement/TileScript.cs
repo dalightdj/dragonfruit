@@ -3,7 +3,8 @@ using System.Collections;
 
 public class TileScript : MonoBehaviour {
 
-	private SFXController SFX;
+	private int housePopIncrease = 10;
+	private int apartmentPopIncrease = 20;
 
 	public int population;
 	public int material;
@@ -15,57 +16,44 @@ public class TileScript : MonoBehaviour {
 
 	public enum TileType{WATER, LAND, FOREST};
 
-	void Start(){
-		GameObject musicPlayer = GameObject.FindWithTag ("SFX");
-		SFX = musicPlayer.GetComponent ("SFXController") as SFXController;
 
-		SFX.playClip (0);
-
-
-	}
-
+	//Builds a building on this tile
 	public void build(){
-
-		//UNCOMMENT THIS FOR BUILDING RESTRICTION
+		//To retrieve the values
 		BuildingScript buildingScript = building.GetComponent<BuildingScript> ();
-		if (!GameController.gameController.sufficientResourses (buildingScript.populationCost, buildingScript.materialCost, 0, 0)) {
-			print ("NOT ENOUGH RESOURCES");
+
+		//House increases the max population by 10 while apartment increases the max population by 20
+		if (building.name.Equals ("House")) {
+			GameController.gameController.increaseMaxPopulation (housePopIncrease);
+		} else if (building.name.Equals ("Apartment")) {
+			GameController.gameController.increaseMaxPopulation (apartmentPopIncrease);
 		} else {
-			if (building.name.Equals ("House")) {
-				GameController.gameController.increaseMaxPopulation (10);
-			} else if (building.name.Equals ("Apartment")) {
-				GameController.gameController.increaseMaxPopulation (20);
-			} else {
-				int employment = 10;
-
-				//UNCOMMENT THIS FOR BUILDING RESTRICTION
-				 if(!GameController.gameController.sufficientUnemployed(employment)){
-					print ("NOT ENOUGH UNEMPLOYED");
-					return;
-				}
-				GameController.gameController.addEmployed (employment);
-			}
-			print ("INSTANTITATION");
-			SFX.playClip (1);
-			GameController.gameController.addResources (-buildingScript.populationCost, -buildingScript.materialCost, buildingScript.pollutionCost, 0);
-			GameObject build = Instantiate (building);
-			build.transform.position = tile.transform.position;
+			GameController.gameController.addEmployed(buildingScript.employmentCost);
 		}
+
+		//Build the building in the correct position and remove the appropriate amount of resources
+		GameController.gameController.addResources (-buildingScript.populationCost, -buildingScript.materialCost, buildingScript.pollutionCost, 0);
+		GameObject build = Instantiate (building);
+		build.transform.position = tile.transform.position;
 	}
+	
 
-
+	//Destroys the building on this tile
 	public void destroyBuilding(){
 		if (building != null) {
-			Destroy (building);
+			BuildingScript buildingScript = building.GetComponent<BuildingScript>();
 
 			if (building.name.Equals ("House")) {
-				GameController.gameController.increaseMaxPopulation (-10);
+				GameController.gameController.increaseMaxPopulation (-housePopIncrease);
 			} 
 			else if(building.name.Equals ("Apartment")){
-				GameController.gameController.increaseMaxPopulation (-20);
+				GameController.gameController.increaseMaxPopulation (-apartmentPopIncrease);
 			} else {
-				GameController.gameController.addEmployed (-10);
+				GameController.gameController.addEmployed (-buildingScript.employmentCost);
 			}
+
+			Destroy (building);
+			building = null;
 		}
 	}
 }

@@ -236,24 +236,25 @@ public class BuildMenuScript : MonoBehaviour {
 		imageButton.onClick.AddListener(() => {
 			selectedTileScript.build ();
 			closeMenu(menu);
-			popup.SetActive (false);//once building is built, turn off popup
+			closePopup(popup);
 		});
 	}
 
 
 	//Adds the highlgihting for a given tile. will add a point light 1 unit closer to the screen from the given game object
-	void highlightTile(GameObject tile, Color highLightColor, GameObject lightGameObject){		
-		Light lightComp = lightGameObject.AddComponent<Light>();
-		lightComp.color = highLightColor;
+	void highlightTile(GameObject tile, Color highLightColor, GameObject lightGameObject){
+		Light lightComponent = lightGameObject.AddComponent<Light>();
+		lightComponent.color = highLightColor;
 		Vector3 raise = new Vector3 (0,1,0);
-		lightGameObject.transform.position = tile.transform.position + raise;		
+		lightGameObject.transform.position = tile.transform.position + raise;
 	}
 	
 
+	//Close the given build menu
 	public void closeMenu(GameObject menu){
 		int index = getIndex (menu);
 
-		//remove highlight and close menu
+		//Remove highlight and close menu
 		Destroy (tileHighlightLights[index]);
 		tileHighlightLights[index] = null;
 		menu.SetActive (false);
@@ -263,7 +264,7 @@ public class BuildMenuScript : MonoBehaviour {
 		popup.SetActive (false);
 	}
 
-
+	/*
 	public void BuildBuilding(Button button, GameObject menu){
 		string buttonAsString = button.ToString().Split('(', ' ')[0];
 
@@ -286,7 +287,7 @@ public class BuildMenuScript : MonoBehaviour {
 				return;
 			}
 		}
-	}
+	}*/
 
 	private int getIndex(GameObject menu){
 		string getIndex = menu.ToString().Substring(9, 1);
