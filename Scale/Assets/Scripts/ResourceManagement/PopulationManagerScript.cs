@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//A class for managing the population. It inherits from the ResourceManagementScript
 public class PopulationManagerScript : ResourceManagementScript {
 
 	private int maxPopulation = 50;
@@ -16,17 +17,17 @@ public class PopulationManagerScript : ResourceManagementScript {
 
 	// Update is called once per frame
 	void Update () {
-		//make sure there is enough food
+		//Make sure there is enough food
 		if (GameController.gameController.sufficientResourses (0, 0, 0, foodRequirementPerPerson * currentPopulation)) {
 			GameController.gameController.addResources (0, 0, 0, -(foodRequirementPerPerson * currentPopulation));
 		} else {
-			GameController.gameController.addResources (-0.05f, 0, 0, 0);
+			GameController.gameController.addResources (-0.85f, 0, 0, 0);
 		}
 
-		//do not exceed max population
+		//Do not exceed max population
 		if (GameController.gameController.getTotalPopulation() < maxPopulation) {
 			currentPopulation++;
-			base.Update ();
+			base.Update ();//Call the ResourceManagementScript's update method
 		}
 	}
 

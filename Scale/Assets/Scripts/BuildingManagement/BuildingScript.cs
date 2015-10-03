@@ -15,10 +15,17 @@ public class BuildingScript : MonoBehaviour {
 	public int pollutionCost;
 	public int employmentCost;
 
+	//for playing the building sound effect
+	private SFXController SFX;
+
 	void Start(){
-		//print ("Building Script");
 		GameController gc = GameController.gameController;
 		gc.addResourceGrowthRate (populationGrowth, materialGrowth, pollutionGrowth, foodGrowth);
+
+		//Play the building sound effect
+		GameObject musicPlayer = GameObject.FindWithTag ("SFX");
+		SFX = musicPlayer.GetComponent ("SFXController") as SFXController;
+		SFX.playClip (0);
 	}
 
 }
