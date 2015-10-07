@@ -13,9 +13,9 @@ public class GameController : MonoBehaviour {
 	private GameObject[] HUDs;//the Text components that will show the score
 	
 	private float totalPopulation = 50;
-	private float totalMaterial = 500;
-	private float totalPollution = 500;
-	private float totalFood = 500;
+	private float totalMaterial = 100;
+	private float totalPollution = 0;
+	private float totalFood = 100;
 
 	private PopulationManagerScript populationManager;
 	private FoodManagerScript foodManager;
@@ -63,7 +63,13 @@ public class GameController : MonoBehaviour {
 		}
 
 		//END GAME
-		if ((time >= timeLimit) || (totalPopulation<0)) {
+		if (totalPopulation<=0) {
+			Application.LoadLevel("EndingPan");
+		}
+		else if(totalPollution>=1000){
+			Application.LoadLevel("EndingPan");
+		}
+		else if(time >= timeLimit){//run out of time
 			Application.LoadLevel("EndingPan");
 		}
 	}
