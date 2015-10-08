@@ -66,13 +66,13 @@ public class GameController : MonoBehaviour {
 
 		//END GAME
 		if (totalPopulation<=0) {
-			Application.LoadLevel("EndingPan");
+			Application.LoadLevel("populationEnding");
 		}
 		else if(totalPollution>=1000){
 			Application.LoadLevel("EndingPan");
 		}
 		else if(time >= timeLimit){//run out of time
-			Application.LoadLevel("EndingPan");
+			Application.LoadLevel("TimeUp");
 		}
 	}
 

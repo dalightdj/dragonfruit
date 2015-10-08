@@ -23,10 +23,10 @@ public class BuildMenuScript : MonoBehaviour {
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
-		callMenu (Direction.UP, tile);
-		callMenu (Direction.DOWN, tile);
-		callMenu (Direction.LEFT, tile);
-		callMenu (Direction.RIGHT, tile);
+		//callMenu (Direction.UP, tile);
+		//callMenu (Direction.DOWN, tile);
+		//callMenu (Direction.LEFT, tile);
+		//callMenu (Direction.RIGHT, tile);
 
 
 		//populate the popup menu array
@@ -164,7 +164,7 @@ public class BuildMenuScript : MonoBehaviour {
 		popup.SetActive (true);
 
 		//Get all popup menu elements
-		Transform[] popupChildren = popup.GetComponentsInChildren<Transform> ();//{0 = Image, 1 = ResourceImgs, 2 = ResourceCostTexts, 3 = ResourceGrowthTexts, 4 = CloseButton, 5 = AcceptButton, 6 = MessageBar}
+		Transform[] popupChildren = popup.GetComponentsInChildren<Transform> ();
 
 		//Display resource cost text values
 		Text[] resourceCostTexts = null;
