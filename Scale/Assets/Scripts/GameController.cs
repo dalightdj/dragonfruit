@@ -56,7 +56,9 @@ public class GameController : MonoBehaviour {
 			TimeSpan timeSpan = TimeSpan.FromMinutes((timeLimit+0.5)-time);
 
 			textComponents[0].text = string.Format("{0:D2}:{1:D2}", timeSpan.Hours, timeSpan.Minutes);
-			textComponents[1].text = string.Format ("{0:n0}", totalPopulation);
+			textComponents[1].text = string.Format("{0:n0}", populationManager.getUnemployed());
+			textComponents[1].text = textComponents[1].text + "/";
+			textComponents[1].text = textComponents[1].text + string.Format ("{0:n0}", totalPopulation);
 			textComponents[2].text = string.Format ("{0:n0}", totalMaterial);
 			textComponents[3].text = string.Format ("{0:n0}", totalPollution);
 			textComponents[4].text = string.Format ("{0:n0}", totalFood);

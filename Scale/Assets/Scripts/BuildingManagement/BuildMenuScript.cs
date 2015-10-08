@@ -23,10 +23,10 @@ public class BuildMenuScript : MonoBehaviour {
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
-		//callMenu (Direction.UP, tile);
-		//callMenu (Direction.DOWN, tile);
-		//callMenu (Direction.LEFT, tile);
-		//callMenu (Direction.RIGHT, tile);
+		callMenu (Direction.UP, tile);
+		callMenu (Direction.DOWN, tile);
+		callMenu (Direction.LEFT, tile);
+		callMenu (Direction.RIGHT, tile);
 
 
 		//populate the popup menu array
@@ -174,10 +174,11 @@ public class BuildMenuScript : MonoBehaviour {
 			}
 		}
 		//Add the text to the text component
-		resourceCostTexts [0].text = buildingScript.materialCost.ToString("+#;-#;0");
-		resourceCostTexts [1].text = buildingScript.populationCost.ToString("+#;-#;0");
-		resourceCostTexts [2].text = 0.ToString("+#;-#;0");
-		resourceCostTexts [3].text = buildingScript.pollutionCost.ToString("+#;-#;0");
+		resourceCostTexts [0].text = (-buildingScript.populationCost).ToString("+#;-#;0");
+		resourceCostTexts [1].text = (-buildingScript.materialCost).ToString("+#;-#;0");
+		resourceCostTexts [2].text = buildingScript.pollutionCost.ToString("+#;-#;0");
+		resourceCostTexts [3].text = 0.ToString("+#;-#;0");
+
 
 
 		//Display growth rate text
@@ -188,10 +189,10 @@ public class BuildMenuScript : MonoBehaviour {
 			}
 		}
 		//Add the text to the text component
-		growthRateTexts [0].text = buildingScript.materialGrowth.ToString("+#;-#;0");
-		growthRateTexts [1].text = buildingScript.populationGrowth.ToString("+#;-#;0");
-		growthRateTexts [2].text = buildingScript.foodGrowth.ToString("+#;-#;0");
-		growthRateTexts [3].text = buildingScript.pollutionGrowth.ToString("+#;-#;0");
+		growthRateTexts [0].text = buildingScript.populationGrowth.ToString("+#;-#;0");
+		growthRateTexts [1].text = buildingScript.materialGrowth.ToString("+#;-#;0");
+		growthRateTexts [2].text = buildingScript.pollutionGrowth.ToString("+#;-#;0");
+		growthRateTexts [3].text = buildingScript.foodGrowth.ToString("+#;-#;0");
 
 
 		Transform image = null;
@@ -214,7 +215,7 @@ public class BuildMenuScript : MonoBehaviour {
 			}
 		}
 		//Do not have enough resources
-		if (!GameController.gameController.sufficientResourses (buildingScript.populationCost, buildingScript.materialCost, buildingScript.pollutionCost, 0)) {
+		if (!GameController.gameController.sufficientResourses (buildingScript.populationCost, buildingScript.materialCost, 0, 0)) {//we dont want to check pollution or food cost
 			messageBar.color = Color.red;
 			messageBar.text = "Do not have sufficient resources";
 			return;

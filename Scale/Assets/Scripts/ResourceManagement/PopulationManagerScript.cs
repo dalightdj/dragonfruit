@@ -45,11 +45,15 @@ public class PopulationManagerScript : ResourceManagementScript {
 		maxPopulation += increase;
 	}
 
-	public void addEmployed(int increase){
+	public void addEmployed(float increase){
 		employed += increase;
 	}
 
 	public bool hasSufficientUnemployed(int population){
 		return (currentPopulation-employed) > population;
+	}
+
+	public int getUnemployed(){
+		return (int) (currentPopulation-employed);
 	}
 }

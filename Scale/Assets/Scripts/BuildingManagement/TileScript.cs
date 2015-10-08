@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class TileScript : MonoBehaviour {
@@ -32,7 +32,7 @@ public class TileScript : MonoBehaviour {
 		}
 
 		//Build the building in the correct position and remove the appropriate amount of resources
-		GameController.gameController.addResources (-buildingScript.populationCost, -buildingScript.materialCost, buildingScript.pollutionCost, 0);
+		GameController.gameController.addResources (-buildingScript.employmentCost, -buildingScript.materialCost, buildingScript.pollutionCost, 0);
 		GameObject build = Instantiate (building);
 		build.transform.position = tile.transform.position;
 	}
