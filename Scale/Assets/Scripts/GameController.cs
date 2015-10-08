@@ -66,10 +66,10 @@ public class GameController : MonoBehaviour {
 
 		//END GAME
 		if (totalPopulation<=0) {
-			Application.LoadLevel("populationEnding");
+			Application.LoadLevel("PopulationAnnihilated");
 		}
 		else if(totalPollution>=1000){
-			Application.LoadLevel("EndingPan");
+			Application.LoadLevel("PollutedPlanet");
 		}
 		else if(time >= timeLimit){//run out of time
 			Application.LoadLevel("TimeUp");

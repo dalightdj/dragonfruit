@@ -23,10 +23,10 @@ public class BuildMenuScript : MonoBehaviour {
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
-		//callMenu (Direction.UP, tile);
-		//callMenu (Direction.DOWN, tile);
-		//callMenu (Direction.LEFT, tile);
-		//callMenu (Direction.RIGHT, tile);
+		callMenu (Direction.UP, tile);
+		callMenu (Direction.DOWN, tile);
+		callMenu (Direction.LEFT, tile);
+		callMenu (Direction.RIGHT, tile);
 
 
 		//populate the popup menu array
@@ -174,7 +174,7 @@ public class BuildMenuScript : MonoBehaviour {
 			}
 		}
 		//Add the text to the text component
-		resourceCostTexts [0].text = (-buildingScript.populationCost).ToString("+#;-#;0");
+		resourceCostTexts [0].text = (-buildingScript.employmentCost).ToString("+#;-#;0");
 		resourceCostTexts [1].text = (-buildingScript.materialCost).ToString("+#;-#;0");
 		resourceCostTexts [2].text = buildingScript.pollutionCost.ToString("+#;-#;0");
 		resourceCostTexts [3].text = 0.ToString("+#;-#;0");
@@ -215,7 +215,7 @@ public class BuildMenuScript : MonoBehaviour {
 			}
 		}
 		//Do not have enough resources
-		if (!GameController.gameController.sufficientResourses (buildingScript.populationCost, buildingScript.materialCost, 0, 0)) {//we dont want to check pollution or food cost
+		if (!GameController.gameController.sufficientResourses (0, buildingScript.materialCost, 0, 0)) {//we dont want to check pollution or food cost
 			messageBar.color = Color.red;
 			messageBar.text = "Do not have sufficient resources";
 			return;

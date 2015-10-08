@@ -29,9 +29,9 @@ public class PopulationManagerScript : ResourceManagementScript {
 
 		//Do not exceed max population
 		if (GameController.gameController.getTotalPopulation() < maxPopulation) {
-			print ("C:" + currentPopulation);
-			print ("T:" + GameController.gameController.getTotalPopulation());
-			print ("M:" + maxPopulation);
+			//print ("C:" + currentPopulation);
+			//print ("T:" + GameController.gameController.getTotalPopulation());
+			//print ("M:" + maxPopulation);
 			base.Update ();//Call the ResourceManagementScript's update method
 		}
 	}
