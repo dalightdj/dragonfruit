@@ -10,6 +10,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
   - enabled: 1
-    path: Assets/Scenes/EndingPan.unity
+    path: Assets/Scenes/EndScenes/PollutedPlanet.unity
+  - enabled: 1
+    path: Assets/Scenes/EndScenes/PopulationAnnihilated.unity
+  - enabled: 1
+    path: Assets/Scenes/EndScenes/TimeUp.unity
   - enabled: 1
     path: Assets/Scenes/LoadScene.unity

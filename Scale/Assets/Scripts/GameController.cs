@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
 	private float totalPopulation = 50;
 	private float totalMaterial = 100;
 	private float totalPollution = 0;
-	private float totalFood = 100;
+	private float totalFood = 10;
 
 	private PopulationManagerScript populationManager;
 	private FoodManagerScript foodManager;
@@ -58,14 +58,16 @@ public class GameController : MonoBehaviour {
 			textComponents[0].text = string.Format("{0:D2}:{1:D2}", timeSpan.Hours, timeSpan.Minutes);
 			textComponents[1].text = string.Format("{0:n0}", populationManager.getUnemployed());
 			textComponents[1].text = textComponents[1].text + "/";
-			textComponents[1].text = textComponents[1].text + string.Format ("{0:n0}", totalPopulation);
+			textComponents[1].text = textComponents[1].text + string.Format ("{0:n0}", Mathf.Min (populationManager.getUnemployed(), totalPopulation));
 			textComponents[2].text = string.Format ("{0:n0}", totalMaterial);
 			textComponents[3].text = string.Format ("{0:n0}", totalPollution);
 			textComponents[4].text = string.Format ("{0:n0}", totalFood);
 		}
 
+
+		print ("GameController:" + totalPopulation);
 		//END GAME
-		if (totalPopulation<=0) {
+		if (totalPopulation<1) {//because total population is a float, have to check if it is smaller than 1 which means it is essentially zero
 			Application.LoadLevel("PopulationAnnihilated");
 		}
 		else if(totalPollution>=1000){
