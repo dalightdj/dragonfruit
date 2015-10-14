@@ -61,7 +61,6 @@ public class BuildMenuScript : MonoBehaviour {
 		if (dir == Direction.DOWN) {
 			menu = buildMenus[0];
 			if(menu.activeSelf){//if the menu is already open
-				//StartCoroutine (Continue (tile, Color.red));
 				return;//don't do anything
 			}
 			selectedTiles[0] = tile;//set player one's tile to the selected tile
@@ -265,30 +264,6 @@ public class BuildMenuScript : MonoBehaviour {
 		popup.SetActive (false);
 	}
 
-	/*
-	public void BuildBuilding(Button button, GameObject menu){
-		string buttonAsString = button.ToString().Split('(', ' ')[0];
-
-		int index = getIndex (menu);
-
-		TileScript selectedTileScript = selectedTiles [index].
-			GetComponent<TileScript>();
-
-
-		for (int i = 0; i<buildingOptions.Length; i++) {
-
-			//split the string to get it's name
-			string buildingAsString = buildingOptions[i].ToString().Split('(', ' ')[0];
-
-			if(buttonAsString.Equals(buildingAsString)){
-				selectedTileScript.building = buildings[i];
-				selectedTileScript.build ();
-
-				closeMenu(menu);
-				return;
-			}
-		}
-	}*/
 
 	private int getIndex(GameObject menu){
 		string getIndex = menu.ToString().Substring(9, 1);
@@ -296,15 +271,8 @@ public class BuildMenuScript : MonoBehaviour {
 		return index;
 	}
 
-	/*
-	IEnumerator Continue(Tile tile, Color col){
-
-		//what to do before waiting
-
-		yield return new WaitForSeconds (1);
-
-
-		//what to do after waiting
+	public void destroyHelpMenu(Object menu){
+		Destroy (menu);
 	}
-	*/
+
 }
