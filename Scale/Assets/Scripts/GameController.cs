@@ -14,8 +14,11 @@ public class GameController : MonoBehaviour {
 	
 	private float totalPopulation = 50;
 	private float totalMaterial = 100;
-	private float totalPollution = 0;
+	private float totalPollution = 700;
 	private float totalFood = 10;
+
+	//For colouring the HUD text components. Will color population red if previousPopulation > totalPopulation
+	private float previousPopulation;
 
 	private PopulationManagerScript populationManager;
 	private FoodManagerScript foodManager;
@@ -38,6 +41,8 @@ public class GameController : MonoBehaviour {
 		foodManager = gameObject.AddComponent<FoodManagerScript> ();
 		pollutionManager = gameObject.AddComponent <PollutionManagerScript> ();
 		materialManager = gameObject.AddComponent<MaterialManagerScript> ();
+
+		previousPopulation = totalPopulation;
 	}
 
 
@@ -55,19 +60,33 @@ public class GameController : MonoBehaviour {
 			Text[] textComponents = HUDs[i].GetComponentsInChildren<Text>();
 			TimeSpan timeSpan = TimeSpan.FromMinutes((timeLimit+0.5)-time);
 
+			Color col = Color.blue;
+			Color grey = new Color(0.196f, 0.196f, 0.196f, 1);
+			Color red = new Color(0.784f, 0.098f, 0.098f, 1);
+
 			textComponents[0].text = string.Format("{0:D2}:{1:D2}", timeSpan.Hours, timeSpan.Minutes);
+
+			col = (previousPopulation > totalPopulation) ? red : grey;
+			textComponents[1].color = col;
 			textComponents[1].text = string.Format("{0:n0}", populationManager.getUnemployed());
 			textComponents[1].text = textComponents[1].text + "/";
-			textComponents[1].text = textComponents[1].text + string.Format ("{0:n0}", Mathf.Min (populationManager.getUnemployed(), totalPopulation));
+			textComponents[1].text = textComponents[1].text + string.Format ("{0:n0}", Math.Floor (totalPopulation));//Mathf.Min (populationManager.getUnemployed(), totalPopulation));
+
 			textComponents[2].text = string.Format ("{0:n0}", totalMaterial);
+
+			col = (totalPollution>=800) ? red : grey;
+			textComponents[3].color = col;
 			textComponents[3].text = string.Format ("{0:n0}", totalPollution);
-			textComponents[4].text = string.Format ("{0:n0}", totalFood);
+
+			col = (totalFood<=50) ? red : grey;
+			textComponents[4].color = col;
+			textComponents[4].text = string.Format ("{0:n0}", Math.Floor (totalFood));
 		}
 
 
-		print ("GameController:" + totalPopulation);
+		print ("GameController:" + totalFood);
 		//END GAME
-		if (totalPopulation<1) {//because total population is a float, have to check if it is smaller than 1 which means it is essentially zero
+		if (Math.Floor(totalPopulation)<=0) {
 			Application.LoadLevel("PopulationAnnihilated");
 		}
 		else if(totalPollution>=1000){
@@ -76,6 +95,8 @@ public class GameController : MonoBehaviour {
 		else if(time >= timeLimit){//run out of time
 			Application.LoadLevel("TimeUp");
 		}
+
+		previousPopulation = totalPopulation;
 	}
 
 	public void addResourceGrowthRate(float population, float material, float pollution, float food){
@@ -114,5 +135,9 @@ public class GameController : MonoBehaviour {
 
 	public bool sufficientUnemployed(int population){
 		return populationManager.hasSufficientUnemployed (population);
+	}
+
+	public float getCurrentFood(){
+		return totalFood;
 	}
 }
