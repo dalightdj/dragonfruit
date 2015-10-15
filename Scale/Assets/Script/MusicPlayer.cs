@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MusicPlayer : MonoBehaviour {
 
+//class for playing music in game.
+public class MusicPlayer : MonoBehaviour {
+	//audio source to play from. dragon and drop in editor.
 	public AudioSource source;
+	//array of music clips. change in editor.
 	public AudioClip[] music;
 
 
 	// Use this for initialization
 	void Start () {
-	
-		//source = GetComponent<AudioSource>();
+	    //starts by playing track 0
+
 		source.clip = music [0];
 		source.loop = true;
 		source.Play ();
@@ -24,7 +27,7 @@ public class MusicPlayer : MonoBehaviour {
 
 	
 	}
-
+	//change song to index specified. specify index based on selections in editor
 	public bool changeSong(int songIndex){
 
 		source.Pause ();

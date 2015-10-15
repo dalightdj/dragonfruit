@@ -2,12 +2,15 @@
 using System.Collections;
 
 public class fadeIn : MonoBehaviour {
-
+	//texture to fade to or from.
 	public Texture2D texture;
+	//speed of fade.
 	public float fadeSpeed = 0.1f;
-
+	//draws over everything.
 	private int drawDepth = -1000;
+	//alpha controls how see through the texture is.
 	public float alpha = 1.0f;
+	//controls direction of fade. -1 fades to clear +1 darkens.
 	public int fadeDir = -1;
 
 	// Use this for initialization
@@ -23,7 +26,7 @@ public class fadeIn : MonoBehaviour {
 	}
 
 	void OnGUI(){
-
+		//fades picture in given direction.
 		alpha += fadeDir * fadeSpeed * Time.deltaTime;
 		alpha = Mathf.Clamp01 (alpha);
 
