@@ -50,9 +50,6 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		HUDs = GameObject.FindGameObjectsWithTag ("HUD");
-		for (int i = 0; i<HUDs.Length; i++) {
-			print (HUDs[i]);
-		}
 	}
 	
 	// Update is called once per frame
@@ -87,8 +84,6 @@ public class GameController : MonoBehaviour {
 			textComponents[4].text = string.Format ("{0:n0}", Math.Floor (totalFood));
 		}
 
-
-		print ("GameController:" + totalFood);
 		//END GAME
 		if (Math.Floor(totalPopulation)<=0) {
 			Application.LoadLevel("PopulationAnnihilated");

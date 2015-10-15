@@ -23,10 +23,10 @@ public class BuildMenuScript : MonoBehaviour {
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
-		//callMenu (Direction.UP, tile);
-		//callMenu (Direction.DOWN, tile);
-		//callMenu (Direction.LEFT, tile);
-		//callMenu (Direction.RIGHT, tile);
+		callMenu (Direction.UP, tile);
+		callMenu (Direction.DOWN, tile);
+		callMenu (Direction.LEFT, tile);
+		callMenu (Direction.RIGHT, tile);
 
 
 		//populate the popup menu array
@@ -110,7 +110,7 @@ public class BuildMenuScript : MonoBehaviour {
 		GameObject scrollView = menu.transform.Find ("ScrollView").gameObject;
 		int l = 0;
 		foreach (Transform child in scrollView.transform) {
-			print ("child" + l++ + " " + child);
+			//print ("child" + l++ + " " + child);
 			if(child.gameObject.tag.Equals("BuildingOptionsList")){
 				buildingOptionsList = child.gameObject;
 				break;
@@ -205,6 +205,10 @@ public class BuildMenuScript : MonoBehaviour {
 		//image = Instantiate ();
 		//image = Instantiate (buildingOptions[0]);
 		//image.transform.SetParent(popup.transform, false);
+
+		//Building descriptions
+		Text imageDescription = image.GetComponentInChildren<Text> ();
+		imageDescription.text = buildingScript.description;
 		
 		//Display appropriate message
 		Text messageBar = null;
