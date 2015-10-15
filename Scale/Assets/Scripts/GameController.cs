@@ -7,14 +7,14 @@ public class GameController : MonoBehaviour {
 
 	public static GameController gameController;
 
-	public int timeLimit = 60;//the losing condition i.e. 60 seconds
+	private int timeLimit = 600;//the losing condition i.e. 60 seconds
 
 	private float time;
 	private GameObject[] HUDs;//the Text components that will show the score
 	
 	private float totalPopulation = 50;
 	private float totalMaterial = 100;
-	private float totalPollution = 800;
+	private float totalPollution = 0;
 	private float totalFood = 50;
 
 	//For colouring the HUD text components. Will color population red if previousPopulation > totalPopulation
@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour {
 		materialManager = gameObject.AddComponent<MaterialManagerScript> ();
 
 		previousPopulation = totalPopulation;
-		timeLimit = 45;
+
 	}
 
 
@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour {
 
 			textComponents[2].text = string.Format ("{0:n0}", totalMaterial);
 
-			col = (totalPollution>=800) ? red : grey;
+			col = (totalPollution>=450) ? red : grey;
 			textComponents[3].color = col;
 			textComponents[3].text = string.Format ("{0:n0}", totalPollution);
 
@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour {
 			//Application.LoadLevel("PopulationAnnihilated");
 			Application.LoadLevel("PollutedPlanet");
 		}
-		else if(totalPollution>=1000){
+		else if(totalPollution>=600){
 			Application.LoadLevel("PollutedPlanet");
 		}
 		else if(time >= timeLimit){//run out of time

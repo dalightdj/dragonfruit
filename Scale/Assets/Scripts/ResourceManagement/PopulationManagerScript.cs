@@ -5,7 +5,7 @@ using System.Collections;
 public class PopulationManagerScript : ResourceManagementScript {
 
 	private float maxPopulation = 0;
-	private float currentPopulation = 40;
+	private float currentPopulation = 15;
 	private float employed;//currentPop - employed = unemployed
 	public float foodRequirementPerPerson = 0.001f;
 
