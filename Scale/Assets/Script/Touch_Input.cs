@@ -153,11 +153,11 @@ public class Touch_Input : MonoBehaviour {
 	}
 	void OnGUI(){
 		
-		foreach (Touch t in touches){
+		//foreach (Touch t in touches){
 			
-			GUI.Label(new Rect(t.position.x,t.position.y,100,100),"x coordinate: " + t.position.x + "y coordinate: " + t.position.y );
+		//	GUI.Label(new Rect(t.position.x,t.position.y,100,100),"x coordinate: " + t.position.x + "y coordinate: " + t.position.y );
 			
-		}
+		//}
 		
 	}
 	//removes the touch from the map and also turns swiped to false.
