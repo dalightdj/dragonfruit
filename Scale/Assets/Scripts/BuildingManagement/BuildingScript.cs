@@ -15,6 +15,9 @@ public class BuildingScript : MonoBehaviour {
 	public int pollutionCost;
 	public int employmentCost;
 
+	//a short description of what this building does
+	public string description;
+
 	//for playing the building sound effect
 	private SFXController SFX;
 
