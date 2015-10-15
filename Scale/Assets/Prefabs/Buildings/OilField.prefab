@@ -1325,7 +1325,8 @@ MonoBehaviour:
   materialCost: 15
   pollutionCost: 20
   employmentCost: 5
-  description: 
+  description: 'A boring in the Earth that is designed to extract petroleum  from
+    belo the ground. '
 --- !u!198 &19879782
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3546,6 +3547,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: employmentCost
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: description
+      value: 'A boring in the Earth that is designed to extract petroleum  from belo
+        the ground. '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

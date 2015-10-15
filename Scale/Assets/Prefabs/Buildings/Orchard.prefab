@@ -1149,7 +1149,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187486}
-  m_LocalRotation: {x: -.254223406, y: -.659826159, z: .659826159, w: -.254223377}
+  m_LocalRotation: {x: -.254223377, y: -.6598261, z: .6598261, w: -.254223347}
   m_LocalPosition: {x: .408989877, y: .151372701, z: -.0116821742}
   m_LocalScale: {x: -.609115958, y: -.905867696, z: -.600044668}
   m_Children: []
@@ -1305,7 +1305,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161638}
-  m_LocalRotation: {x: -.254223406, y: -.659826159, z: .659826159, w: -.254223377}
+  m_LocalRotation: {x: -.254223377, y: -.6598261, z: .6598261, w: -.254223347}
   m_LocalPosition: {x: -.192641586, y: .151372701, z: -.0146027124}
   m_LocalScale: {x: -.609115958, y: -.905867696, z: -.600044668}
   m_Children: []
@@ -1401,7 +1401,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169844}
-  m_LocalRotation: {x: -.254223406, y: -.659826159, z: .659826159, w: -.254223377}
+  m_LocalRotation: {x: -.254223377, y: -.6598261, z: .6598261, w: -.254223347}
   m_LocalPosition: {x: -.39415893, y: .151372686, z: -.213199496}
   m_LocalScale: {x: -.609115958, y: -.905867696, z: -.600044668}
   m_Children: []
@@ -1474,7 +1474,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135100}
-  m_LocalRotation: {x: -.254223406, y: -.659826159, z: .659826159, w: -.254223377}
+  m_LocalRotation: {x: -.254223377, y: -.6598261, z: .6598261, w: -.254223347}
   m_LocalPosition: {x: .00595520437, y: .151372716, z: .219040573}
   m_LocalScale: {x: -.609115958, y: -.905867696, z: -.600044668}
   m_Children: []
@@ -1558,7 +1558,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180762}
-  m_LocalRotation: {x: -.254223406, y: -.659826159, z: .659826159, w: -.254223377}
+  m_LocalRotation: {x: -.254223377, y: -.6598261, z: .6598261, w: -.254223347}
   m_LocalPosition: {x: -.192641586, y: .151372686, z: -.385511398}
   m_LocalScale: {x: -.609115958, y: -.905867696, z: -.600044668}
   m_Children: []
@@ -3217,7 +3217,7 @@ MonoBehaviour:
   materialCost: 10
   pollutionCost: 0
   employmentCost: 5
-  description: 
+  description: An area of land devoted to the cultivation of fruit and trees.
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -3260,6 +3260,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: employmentCost
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: description
+      value: An area of land devoted to the cultivation of fruit and trees.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

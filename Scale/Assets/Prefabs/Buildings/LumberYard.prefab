@@ -375,6 +375,8 @@ MonoBehaviour:
   materialCost: 10
   pollutionCost: 5
   employmentCost: 10
+  description: An area of land where lumber and wood-related products are  used for
+    construction.
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -417,6 +419,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: employmentCost
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: description
+      value: An area of land where lumber and wood-related products are  used for
+        construction.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

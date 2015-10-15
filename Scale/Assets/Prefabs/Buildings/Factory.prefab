@@ -260,7 +260,7 @@ MonoBehaviour:
   materialCost: 10
   pollutionCost: 10
   employmentCost: 10
-  description: 
+  description: A building where products are made.
 --- !u!135 &13576412
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1412,6 +1412,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: description
+      value: A building where products are made.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

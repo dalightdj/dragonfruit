@@ -3,8 +3,19 @@ guid: 93f438c74405c53439efddae71738506
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: LoggingMachine
+    100004: Object10
+    400000: //RootNode
+    400002: LoggingMachine
+    400004: Object10
+    2300000: LoggingMachine
+    2300002: Object10
+    3300000: LoggingMachine
+    3300002: Object10
     4300000: LoggingMachine
     4300002: Object10
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 3

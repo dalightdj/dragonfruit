@@ -541,7 +541,7 @@ MonoBehaviour:
   materialCost: 20
   pollutionCost: 30
   employmentCost: 5
-  description: 
+  description: An establishment that provides lodging leased on a short-term basis.
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -584,6 +584,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: employmentCost
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: description
+      value: An establishment that provides lodging leased on a short-term basis.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

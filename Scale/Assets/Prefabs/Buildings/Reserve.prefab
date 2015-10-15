@@ -3766,7 +3766,7 @@ MonoBehaviour:
   materialCost: 15
   pollutionCost: 0
   employmentCost: 5
-  description: 
+  description: A reserve.
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -3809,6 +3809,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: employmentCost
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: description
+      value: A reserve.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

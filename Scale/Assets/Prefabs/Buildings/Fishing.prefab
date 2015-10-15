@@ -1113,7 +1113,8 @@ MonoBehaviour:
   materialCost: 5
   pollutionCost: 3
   employmentCost: 7
-  description: 
+  description: A building extending from land out over water, used as a landing place
+    for boats.
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -1156,6 +1157,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: employmentCost
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: description
+      value: A building extending from land out over water, used as a landing place
+        for boats.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

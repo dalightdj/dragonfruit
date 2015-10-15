@@ -593,7 +593,7 @@ MonoBehaviour:
   materialCost: 12
   pollutionCost: 10
   employmentCost: 10
-  description: 
+  description: An industrial facility for generation of electric power.
 --- !u!198 &19807966
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -2814,6 +2814,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: employmentCost
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: description
+      value: An industrial facility for generation of electric power.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -652,7 +652,8 @@ MonoBehaviour:
   materialCost: 8
   pollutionCost: 8
   employmentCost: 12
-  description: 
+  description: An excavation where valuable minerals and geological materials  are
+    extracted from the earth.
 --- !u!198 &19858602
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1788,6 +1789,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: employmentCost
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: description
+      value: An excavation where valuable minerals and geological materials  are extracted
+        from the earth.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
