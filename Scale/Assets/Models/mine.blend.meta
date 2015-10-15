@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: cb275bc15375bfd42a24a4da9e45c8f1
+timeCreated: 1444866073
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: mine_entrance
+    100004: minecart
+    100006: minecart_001
+    100008: pipe_add_particles_
+    100010: skip2
+    100012: skip_1
+    100014: skip_3
+    100016: Tile_Default
+    400000: //RootNode
+    400002: mine_entrance
+    400004: minecart
+    400006: minecart_001
+    400008: pipe_add_particles_
+    400010: skip2
+    400012: skip_1
+    400014: skip_3
+    400016: Tile_Default
+    2300000: mine_entrance
+    2300002: minecart
+    2300004: minecart_001
+    2300006: pipe_add_particles_
+    2300008: skip2
+    2300010: skip_1
+    2300012: skip_3
+    2300014: Tile_Default
+    3300000: mine_entrance
+    3300002: minecart
+    3300004: minecart_001
+    3300006: pipe_add_particles_
+    3300008: skip2
+    3300010: skip_1
+    3300012: skip_3
+    3300014: Tile_Default
+    4300000: skip_1
+    4300002: pipe_add_particles_
+    4300004: mine_entrance
+    4300006: Tile_Default
+    4300008: minecart
+    4300010: skip2
+    4300012: skip_3
+    4300014: minecart_001
+    7400000: I know how to cook it
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: I know how to cook it
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: mine_entrance
+        weight: 1
+      - path: minecart
+        weight: 1
+      - path: minecart_001
+        weight: 1
+      - path: pipe_add_particles_
+        weight: 1
+      - path: skip2
+        weight: 1
+      - path: skip_1
+        weight: 1
+      - path: skip_3
+        weight: 1
+      - path: Tile_Default
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
