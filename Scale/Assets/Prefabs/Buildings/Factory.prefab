@@ -258,7 +258,7 @@ MonoBehaviour:
   foodGrowth: 0
   populationCost: 0
   materialCost: 10
-  pollutionCost: 10
+  pollutionCost: 40
   employmentCost: 10
   description: A building where products are made.
 --- !u!135 &13576412
@@ -1399,7 +1399,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: pollutionCost
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: employmentCost

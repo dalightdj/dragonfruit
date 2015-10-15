@@ -86,7 +86,8 @@ public class GameController : MonoBehaviour {
 
 		//END GAME
 		if (Math.Floor(totalPopulation)<=0) {
-			Application.LoadLevel("PopulationAnnihilated");
+			//Application.LoadLevel("PopulationAnnihilated");
+			Application.LoadLevel("PollutedPlanet");
 		}
 		else if(totalPollution>=1000){
 			Application.LoadLevel("PollutedPlanet");

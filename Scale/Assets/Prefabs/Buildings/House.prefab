@@ -586,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d12cf4f3031eb741819c93090ef6ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  populationGrowth: 2
+  populationGrowth: 5
   materialGrowth: 0
   pollutionGrowth: 2
   foodGrowth: 0
@@ -608,7 +608,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: populationGrowth
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: materialGrowth

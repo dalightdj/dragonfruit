@@ -113,13 +113,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d12cf4f3031eb741819c93090ef6ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  populationGrowth: 5
+  populationGrowth: 10
   materialGrowth: 0
   pollutionGrowth: 5
   foodGrowth: 0
   populationCost: 0
   materialCost: 20
-  pollutionCost: 50
+  pollutionCost: 20
   employmentCost: 0
   description: A set of self-contained housing units. Provides housing for large masses.
 --- !u!1001 &100100000
@@ -136,6 +136,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: description
       value: A set of self-contained housing units. Provides housing for large masses.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pollutionCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: populationGrowth
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

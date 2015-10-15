@@ -1323,7 +1323,7 @@ MonoBehaviour:
   foodGrowth: 0
   populationCost: 0
   materialCost: 15
-  pollutionCost: 20
+  pollutionCost: 50
   employmentCost: 5
   description: 'A boring in the Earth that is designed to extract petroleum  from
     belo the ground. '
@@ -3542,7 +3542,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: pollutionCost
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: employmentCost
