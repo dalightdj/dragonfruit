@@ -3766,7 +3766,7 @@ MonoBehaviour:
   materialCost: 15
   pollutionCost: 0
   employmentCost: 5
-  description: A reserve.
+  description: A reserve is a protected area for wildlife, flora or fauna
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -3812,7 +3812,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: description
-      value: A reserve.
+      value: A reserve is a protected area for wildlife, flora or fauna
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
