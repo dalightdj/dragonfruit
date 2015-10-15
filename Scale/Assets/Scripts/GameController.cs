@@ -50,6 +50,9 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		HUDs = GameObject.FindGameObjectsWithTag ("HUD");
+		for (int i = 0; i<HUDs.Length; i++) {
+			print (HUDs[i]);
+		}
 	}
 	
 	// Update is called once per frame
