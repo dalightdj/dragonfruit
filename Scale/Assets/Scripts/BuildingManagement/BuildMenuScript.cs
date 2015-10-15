@@ -23,10 +23,10 @@ public class BuildMenuScript : MonoBehaviour {
 		//for (int i = 0; i<buildMenus.Length; i++) {
 		//	asdf (buildMenus[i]);
 		//}
-		callMenu (Direction.UP, tile);
-		callMenu (Direction.DOWN, tile);
-		callMenu (Direction.LEFT, tile);
-		callMenu (Direction.RIGHT, tile);
+		//callMenu (Direction.UP, tile);
+		//callMenu (Direction.DOWN, tile);
+		//callMenu (Direction.LEFT, tile);
+		//callMenu (Direction.RIGHT, tile);
 
 
 		//populate the popup menu array

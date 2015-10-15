@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
 	
 	private float totalPopulation = 50;
 	private float totalMaterial = 100;
-	private float totalPollution = 0;
+	private float totalPollution = 800;
 	private float totalFood = 50;
 
 	//For colouring the HUD text components. Will color population red if previousPopulation > totalPopulation
@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour {
 		materialManager = gameObject.AddComponent<MaterialManagerScript> ();
 
 		previousPopulation = totalPopulation;
+		timeLimit = 45;
 	}
 
 
