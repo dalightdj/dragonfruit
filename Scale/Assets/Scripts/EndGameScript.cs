@@ -9,8 +9,8 @@ public class EndGameScript : MonoBehaviour {
 	}
 
 	IEnumerator ReturnToOpening(){
-		yield return new WaitForSeconds(60);
-		Application.LoadLevel ("Opening");
+		yield return new WaitForSeconds(120);
+		Application.LoadLevel ("OpeningPan");
 	}
 
 	public void StartGame(){
