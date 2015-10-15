@@ -97,7 +97,7 @@ GameObject:
   - 114: {fileID: 11446672}
   m_Layer: 5
   m_Name: BuildMenu 1
-  m_TagString: Untagged
+  m_TagString: HUD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -514,7 +514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &167556
 GameObject:
   m_ObjectHideFlags: 1
@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .0758621693, g: 1, b: 0, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 0692a210dffb01645a20f0aefec1a513, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e9a7b955d72c38469d66943f851b519, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1776,7 +1776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .0758621693, g: 1, b: 0, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 2077b799d0cbfab48a817c8d091bce0d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2ebedf5f944e234a85ce33b251693a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1875,7 +1875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .0758621693, g: 1, b: 0, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 8eaeb29b596bdbd408cc77da514d51ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e10957b3182d8644932ee72cefebdf5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
