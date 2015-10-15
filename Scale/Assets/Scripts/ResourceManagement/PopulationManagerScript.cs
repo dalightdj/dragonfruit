@@ -24,7 +24,11 @@ public class PopulationManagerScript : ResourceManagementScript {
 			GameController.gameController.addResources (0, 0, 0, -(foodRequirementPerPerson * currentPopulation));
 		} else {//If not enough food then population starts plummeting
 			float popLoss = -0.15f;
-			GameController.gameController.addResources (popLoss, 0, 0, 0);
+			float food = GameController.gameController.getCurrentFood();
+			food = 0;
+			popLoss -= (food/10000);//some of the people get to eat so less people die off
+
+			GameController.gameController.addResources (popLoss, 0, 0, food);
 			currentPopulation = GameController.gameController.getTotalPopulation();
 			if(employed >= currentPopulation){//if there is more employed than the current population
 				employed += popLoss;//then the employed people start dying away

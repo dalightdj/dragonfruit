@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_Color: {r: .266666681, g: .270588249, b: .270588249, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8504bb8fec452fe42a963f533ee65788, type: 3}
-    m_FontSize: 100
+    m_FontSize: 80
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
@@ -1309,7 +1309,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: You Lose
+  m_Text: 'You Polluted
+
+    The Planet'
 --- !u!222 &1677688902
 CanvasRenderer:
   m_ObjectHideFlags: 0
