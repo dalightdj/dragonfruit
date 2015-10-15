@@ -26,6 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 410808}
   - 95: {fileID: 9513108}
+  - 65: {fileID: 6561520}
   m_Layer: 0
   m_Name: turbine
   m_TagString: Untagged
@@ -158,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 455282}
@@ -250,7 +251,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175964}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .0140000004, z: 0}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 410808}
@@ -484,6 +485,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119246}
   m_Mesh: {fileID: 4300000, guid: d4943a3f3afaf0f4a86cae7762848087, type: 3}
+--- !u!65 &6561520
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9513108
 Animator:
   serializedVersion: 3
@@ -520,6 +533,7 @@ MonoBehaviour:
   materialCost: 22
   pollutionCost: 0
   employmentCost: 10
+  description: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 468206}
   - 95: {fileID: 9517240}
+  - 65: {fileID: 6550340}
   m_Layer: 0
   m_Name: house
   m_TagString: Untagged
@@ -284,7 +285,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .25, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 406130}
@@ -545,6 +546,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181356}
   m_Mesh: {fileID: 4300008, guid: 6bea5d90aac3fdb45b59d58800816de5, type: 3}
+--- !u!65 &6550340
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9517240
 Animator:
   serializedVersion: 3
@@ -581,6 +594,7 @@ MonoBehaviour:
   materialCost: 2
   pollutionCost: 7
   employmentCost: 0
+  description: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

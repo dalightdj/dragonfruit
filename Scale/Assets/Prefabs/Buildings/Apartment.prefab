@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 434942}
   - 33: {fileID: 3335436}
   - 23: {fileID: 2363896}
+  - 65: {fileID: 6593916}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: .000739562791, y: .000739562616, z: .000739562616}
   m_Children:
   - {fileID: 434942}
@@ -89,6 +90,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100462}
   m_Mesh: {fileID: 4300000, guid: b2deeeb1462f04f2d8278495cf7c4c67, type: 3}
+--- !u!65 &6593916
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100462}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1000, y: 1000, z: 1000}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11486156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,6 +121,7 @@ MonoBehaviour:
   materialCost: 20
   pollutionCost: 50
   employmentCost: 0
+  description: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
